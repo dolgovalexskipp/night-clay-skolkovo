@@ -59,6 +59,11 @@
     .badge-clay { background: rgba(199,91,42,.15); color: var(--clay); }
     .badge-muted { background: var(--border); color: var(--text-2); }
 
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item[open] { border-color: rgba(199,91,42,.3); }
+    .faq-item[open] summary span { transform: rotate(45deg); }
+    .faq-item:hover { border-color: rgba(199,91,42,.2); }
+
     /* Mobile */
     @media (max-width: 1024px) {
       .wrap { padding-left: 24px; padding-right: 24px; }
@@ -142,6 +147,7 @@
         <a href="#rating" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Рейтинг</a>
         <a href="#playoff" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Плей-офф</a>
         <a href="#venue" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Площадка</a>
+        <a href="#faq" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">FAQ</a>
         <a href="#pricing" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Стоимость</a>
         <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%20Skolkovo%20Night%20Clay%20League%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%3F" target="_blank" class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Подать заявку</a>
       </nav>
@@ -454,6 +460,76 @@
 
   <div class="divider"></div>
 
+  <!-- FAQ -->
+  <section id="faq" class="wrap section" style="padding-top: 80px; padding-bottom: 80px;">
+    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 40px;">Частые вопросы</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 800px;">
+
+      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.3s;">
+        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-1); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          Какой уровень нужен для участия?
+          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
+        </summary>
+        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          Лига рассчитана на игроков уровня NTRP 3.0 — 4.0. Стартовый уровень присваивается до начала сезона на основании самооценки и оценки организаторов. Если вы не уверены в своём уровне — напишите, поможем определить.
+        </div>
+      </details>
+
+      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.3s;">
+        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-1); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          Как формируются пары?
+          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
+        </summary>
+        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          В регулярном этапе пары меняются каждый тур. Система минимизирует повторы партнёров и учитывает текущий рейтинг для баланса. В плей-офф пары фиксируются и играют вместе до конца сетки.
+        </div>
+      </details>
+
+      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.3s;">
+        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-1); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          Что если я не смогу прийти на матч?
+          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
+        </summary>
+        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          Пропуск тура возможен, но за пропущенный матч очки не начисляются. Детали по переносам и заменам обсуждаются индивидуально с организатором. Мы стараемся быть гибкими, но регулярность — основа формата.
+        </div>
+      </details>
+
+      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.3s;">
+        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-1); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          Сколько матчей за сезон?
+          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
+        </summary>
+        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          В регулярном этапе — 7 туров, по одному матчу в неделю. Плюс матчи плей-офф (полуфинал, матч за 3-е место или финал). Итого от 7 до 10 матчей за сезон.
+        </div>
+      </details>
+
+      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.3s;">
+        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-1); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          Нужна ли своя ракетка и форма?
+          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
+        </summary>
+        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          Своя ракетка — да. Форма — свободная, но при регистрации вы получаете welcome pack с футболкой лиги, напульсниками, бутылкой и полотенцем. Мячи, вода и судья — на каждом матче от организаторов.
+        </div>
+      </details>
+
+      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.3s;">
+        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-1); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          Как подать заявку?
+          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
+        </summary>
+        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          Напишите организатору в Telegram — кнопка «Подать заявку» на этой странице. Мы обсудим ваш уровень, ответим на вопросы и зафиксируем место в сезоне.
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Pricing -->
   <section id="pricing" class="pricing-section" style="padding: 100px 40px; background: linear-gradient(180deg, #1A1008 0%, var(--bg) 100%);">
     <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
@@ -480,10 +556,10 @@
         <div style="font-size: 12px; color: var(--text-3);">Организатор: Долгов AI и партнёры</div>
       </div>
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <span style="font-size: 12px; color: var(--text-3);">Школа тенниса Сколково</span>
-        <span style="font-size: 12px; color: var(--text-3);">Summer 2026</span>
-        <span style="font-size: 12px; color: var(--text-3);">Clay Only</span>
+        <a href="players.html" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Участники</a>
+        <a href="#faq" style="font-size: 12px; color: var(--text-2); text-decoration: none;">FAQ</a>
         <a href="regulations.md" target="_blank" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Регламент</a>
+        <span style="font-size: 12px; color: var(--text-3);">Summer 2026</span>
       </div>
     </div>
   </footer>

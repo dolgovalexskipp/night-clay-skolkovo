@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Участники — Skolkovo Night Clay League</title>
+  <meta name="description" content="Участники сезона Лето 2026. Skolkovo Night Clay League.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Light.ttf') format('truetype'); font-weight: 300; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Regular.ttf') format('truetype'); font-weight: 400; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Medium.ttf') format('truetype'); font-weight: 500; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-SemiBold.ttf') format('truetype'); font-weight: 600; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Bold.ttf') format('truetype'); font-weight: 700; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-ExtraBold.ttf') format('truetype'); font-weight: 800; }
+
+    :root {
+      --clay: #C75B2A;
+      --clay-light: #E07A4A;
+      --clay-glow: rgba(199,91,42,0.15);
+      --bg: #0A0A0F;
+      --surface: #141418;
+      --surface-2: #1A1A1F;
+      --border: #252529;
+      --text-1: #F5F5F4;
+      --text-2: #8A8A90;
+      --text-3: #55555A;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lufga', system-ui, sans-serif; background: var(--bg); color: var(--text-1); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+
+    /* FIFA Card */
+    .fifa-card {
+      position: relative;
+      width: 340px;
+      background: linear-gradient(165deg, #1A1008 0%, #141418 40%, #0F0F14 100%);
+      border: 1px solid rgba(199,91,42,0.3);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s;
+    }
+    .fifa-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--clay);
+      box-shadow: 0 20px 60px rgba(199,91,42,0.2);
+    }
+
+    .fifa-card-media {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+    }
+    .fifa-card-media video, .fifa-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .fifa-card-media::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(transparent, #141418);
+    }
+
+    .fifa-rating {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(199,91,42,0.4);
+    }
+    .fifa-rating-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--clay);
+      line-height: 1;
+    }
+    .fifa-rating-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-2);
+      letter-spacing: 1.5px;
+      margin-top: 2px;
+    }
+
+    .fifa-badges {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .fifa-badge {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+    }
+
+    .fifa-card-body {
+      padding: 20px 24px 24px;
+    }
+    .fifa-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .fifa-meta {
+      font-size: 13px;
+      color: var(--text-3);
+      margin-bottom: 16px;
+    }
+
+    .fifa-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .fifa-stat {
+      text-align: center;
+      padding: 10px 0;
+      background: rgba(199,91,42,0.06);
+      border-radius: 10px;
+      border: 1px solid rgba(199,91,42,0.1);
+    }
+    .fifa-stat-val {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--clay);
+      line-height: 1;
+    }
+    .fifa-stat-label {
+      font-size: 10px;
+      color: var(--text-3);
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .fifa-bio {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* Player detail page */
+    .player-detail {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .player-media {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(199,91,42,0.3);
+    }
+    .player-media video, .player-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .detail-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .detail-stat {
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+    }
+    .detail-stat-val {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--clay);
+      line-height: 1.1;
+    }
+    .detail-stat-label {
+      font-size: 12px;
+      color: var(--text-3);
+      margin-top: 6px;
+    }
+
+    .detail-section {
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .detail-section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--clay);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+    }
+    .detail-dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--clay);
+    }
+    .detail-item-text {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.2s;
+      margin-bottom: 40px;
+    }
+    .back-link:hover { color: var(--text-1); }
+
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; background: var(--clay); color: #fff; font-weight: 600; font-size: 16px; border-radius: 12px; border: none; cursor: pointer; transition: all .3s; text-decoration: none; font-family: inherit; }
+    .btn-primary:hover { background: var(--clay-light); box-shadow: 0 8px 32px rgba(199,91,42,.3); transform: translateY(-1px); }
+
+    /* Players grid */
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .wrap { padding-left: 20px; padding-right: 20px; }
+      .player-detail { grid-template-columns: 1fr; gap: 28px; }
+      .detail-stats { grid-template-columns: 1fr 1fr; }
+      .fifa-card { width: 100%; max-width: 380px; }
+      .players-grid { grid-template-columns: 1fr; }
+      .page-title { font-size: 28px !important; }
+    }
+    @media (max-width: 480px) {
+      .wrap { padding-left: 16px; padding-right: 16px; }
+      .fifa-card-media { height: 320px; }
+      .detail-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(10,10,15,.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);">
+    <div class="wrap" style="padding-top: 18px; padding-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="font-weight: 700; font-size: 14px; letter-spacing: 2.5px; color: var(--text-1); text-decoration: none;">SKOLKOVO NIGHT CLAY LEAGUE</a>
+      <nav style="display: flex; align-items: center; gap: 28px;">
+        <a href="index.html" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Главная</a>
+        <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%20Skolkovo%20Night%20Clay%20League%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%3F" target="_blank" class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Подать заявку</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Player Detail: Aleksandr Dolgov -->
+  <section class="wrap" style="padding-top: 56px; padding-bottom: 80px;">
+    <a href="players.html" class="back-link">&larr; Все участники</a>
+
+    <div class="player-detail">
+      <!-- Left: Media + Rating -->
+      <div>
+        <div class="player-media" style="position: relative;">
+          <video autoplay loop muted playsinline>
+            <source src="img/dolgov.mp4" type="video/mp4">
+          </video>
+          <div class="fifa-rating" style="position: absolute; top: 16px; left: 16px;">
+            <div class="fifa-rating-val">4.0</div>
+            <div class="fifa-rating-label">NTRP</div>
+          </div>
+        </div>
+
+        <!-- Stats under media -->
+        <div class="detail-stats" style="margin-top: 16px;">
+          <div class="detail-stat">
+            <div class="detail-stat-val">8</div>
+            <div class="detail-stat-label">лет в теннисе</div>
+          </div>
+          <div class="detail-stat">
+            <div class="detail-stat-val">2H</div>
+            <div class="detail-stat-label">бэкхэнд</div>
+          </div>
+          <div class="detail-stat">
+            <div class="detail-stat-val">R</div>
+            <div class="detail-stat-label">правша</div>
+          </div>
+          <div class="detail-stat">
+            <div class="detail-stat-val">36</div>
+            <div class="detail-stat-label">лет</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Info -->
+      <div>
+        <div style="margin-bottom: 32px;">
+          <h1 class="page-title" style="font-size: 44px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;">Александр Долгов</h1>
+          <div style="font-size: 15px; color: var(--text-2); margin-top: 8px;">Предприниматель &middot; Москва / Сколково</div>
+          <div style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;">
+            <span style="padding: 5px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; background: rgba(199,91,42,0.15); color: var(--clay);">NTRP 4.0</span>
+            <span style="padding: 5px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; background: var(--border); color: var(--text-2);">Организатор лиги</span>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="detail-section" style="margin-bottom: 16px;">
+          <div class="detail-section-title">О себе</div>
+          <p style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
+            Предприниматель, строю AI-first компанию «Долгов AI и партнёры», которая перестраивает разработку IT-продуктов на AI-подход. Основатель Skipp.dev — платформы для найма разработчиков по всему миру ($3M raised, ТОП-5 стартапов России по версии Inc. в 2021). Сооснователь Veyra — голосовые AI-агенты для бизнеса. Ex-Skyeng, ex-McKinsey.
+          </p>
+        </div>
+
+        <!-- Tennis -->
+        <div class="detail-section" style="margin-bottom: 16px;">
+          <div class="detail-section-title">Теннис</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div class="detail-item">
+              <div class="detail-dot"></div>
+              <div class="detail-item-text">8 лет игрового опыта, начал в детской школе</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-dot"></div>
+              <div class="detail-item-text">Занимался в Черноголовке в группе с Ярославой Шведовой — двукратной победительницей турниров Большого шлема в парном разряде, экс-3-й ракеткой мира в парах</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-dot"></div>
+              <div class="detail-item-text">Двуручный бэкхэнд, правша</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skolkovo -->
+        <div class="detail-section" style="margin-bottom: 32px;">
+          <div class="detail-section-title">Сколково</div>
+          <p style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
+            Жил в Сколково с 2019 по 2025 год. Здесь растёт и ходит в школу сын. Знаю это место изнутри — и хочу, чтобы лига стала частью его спортивной жизни.
+          </p>
+        </div>
+
+        <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%20Skolkovo%20Night%20Clay%20League%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%3F" target="_blank" class="btn-primary">Подать заявку в лигу</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border); padding: 28px 40px;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--text-3); margin-bottom: 6px;">SKOLKOVO NIGHT CLAY LEAGUE</div>
+        <div style="font-size: 12px; color: var(--text-3);">Организатор: Долгов AI и партнёры</div>
+      </div>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <a href="index.html" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Главная</a>
+        <a href="regulations.md" target="_blank" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Регламент</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
