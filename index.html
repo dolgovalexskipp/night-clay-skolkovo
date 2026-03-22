@@ -63,24 +63,46 @@
     @media (max-width: 1024px) {
       .wrap { padding-left: 24px; padding-right: 24px; }
       .divider { margin: 0 24px; }
+      .hero-img { flex: 0 0 380px !important; height: 400px !important; }
+      .community-card { flex: 0 0 340px !important; }
     }
     @media (max-width: 768px) {
       .hero-split { flex-direction: column !important; }
       .hero-text { text-align: center !important; align-items: center !important; }
-      .hero-title { font-size: 36px !important; }
-      .hero-img { width: 100% !important; height: 300px !important; }
-      .section-title { font-size: 30px !important; }
-      .grid-4, .grid-5 { grid-template-columns: 1fr 1fr !important; }
+      .hero-title { font-size: 36px !important; letter-spacing: -1.5px !important; }
+      .hero-img { flex: unset !important; width: 100% !important; height: 280px !important; }
+      .hero-badge { font-size: 11px !important; padding: 6px 14px !important; }
+      .section-title { font-size: 28px !important; }
+      .grid-4 { grid-template-columns: 1fr 1fr !important; }
+      .grid-5 { grid-template-columns: 1fr 1fr !important; }
       .grid-2 { grid-template-columns: 1fr !important; }
       .grid-10 { grid-template-columns: 1fr !important; }
       .hero-btns { flex-direction: column !important; align-items: stretch !important; }
       .nav-links { display: none !important; }
-      .price-single { max-width: 100% !important; }
+      .price-single { max-width: 100% !important; padding: 36px 24px !important; }
       .venue-split { flex-direction: column !important; }
+      .community-section { flex-direction: column !important; }
+      .community-card { flex: unset !important; width: 100% !important; min-width: unset !important; }
+      .community-text { min-width: unset !important; }
+      .stat-val { font-size: 28px !important; }
+      .pricing-section { padding: 80px 24px !important; }
+      .footer-inner { padding: 24px !important; }
+      .footer-content { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
     }
     @media (max-width: 480px) {
+      .wrap { padding-left: 16px; padding-right: 16px; }
+      .divider { margin: 0 16px; }
       .grid-4, .grid-5 { grid-template-columns: 1fr !important; }
-      .hero-title { font-size: 30px !important; }
+      .hero-title { font-size: 28px !important; letter-spacing: -1px !important; }
+      .hero-img { height: 220px !important; }
+      .section-title { font-size: 24px !important; }
+      .stat-val { font-size: 24px !important; }
+      .stat-card { padding: 20px !important; min-height: 100px !important; }
+      .step-num { font-size: 32px !important; }
+      .btn-primary, .btn-secondary { padding: 14px 24px !important; font-size: 15px !important; }
+      .price-amount { font-size: 44px !important; }
+      .pricing-section { padding: 60px 16px !important; }
+      .footer-inner { padding: 20px 16px !important; }
     }
   </style>
 </head>
@@ -105,7 +127,7 @@
   <section class="wrap" style="padding-top: 72px; padding-bottom: 56px;">
     <div class="hero-split" style="display: flex; gap: 48px; align-items: center;">
       <div class="hero-text" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
-        <div style="display: inline-flex; padding: 8px 20px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 28px;">
+        <div class="hero-badge" style="display: inline-flex; padding: 8px 20px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 28px;">
           <span style="font-size: 13px; color: var(--text-2); font-weight: 500;">Summer 2026 &middot; Школа тенниса Сколково &middot; Clay Only</span>
         </div>
         <h1 class="hero-title" style="font-size: 60px; font-weight: 700; line-height: 1.05; letter-spacing: -2.5px; margin-bottom: 20px;">
@@ -119,7 +141,7 @@
           <a href="#format" class="btn-secondary">Подробнее</a>
         </div>
       </div>
-      <div class="hero-img" style="flex: 0 0 520px; height: 480px; border-radius: 24px; overflow: hidden;">
+      <div class="hero-img" style="flex: 0 0 520px; height: 480px; border-radius: 24px; overflow: hidden; max-width: 100%;">
         <img src="img/hero.jpg" alt="Теннисная команда" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
     </div>
@@ -177,8 +199,8 @@
 
   <!-- Community -->
   <section class="wrap" style="padding-top: 80px; padding-bottom: 80px;">
-    <div style="display: flex; gap: 48px; align-items: center; flex-wrap: wrap;">
-      <div style="flex: 1; min-width: 300px;">
+    <div class="community-section" style="display: flex; gap: 48px; align-items: center; flex-wrap: wrap;">
+      <div class="community-text" style="flex: 1; min-width: 300px;">
         <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Больше, чем турнир</h2>
         <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; margin-bottom: 24px;">
           Skolkovo Night Clay League — это теннисное комьюнити с полным сопровождением сезона. Не просто корт и мячи, а организованная среда для игры, роста и общения.
@@ -207,7 +229,7 @@
           </div>
         </div>
       </div>
-      <div style="flex: 0 0 420px; min-width: 280px;">
+      <div class="community-card" style="flex: 0 0 420px; min-width: 280px;">
         <div class="card" style="padding: 32px;">
           <div style="font-size: 15px; font-weight: 600; color: var(--clay); margin-bottom: 20px;">Полное сопровождение сезона</div>
           <div style="display: flex; flex-direction: column; gap: 14px;">
@@ -408,14 +430,14 @@
   <div class="divider"></div>
 
   <!-- Pricing -->
-  <section id="pricing" style="padding: 100px 40px; background: linear-gradient(180deg, #1A1008 0%, var(--bg) 100%);">
+  <section id="pricing" class="pricing-section" style="padding: 100px 40px; background: linear-gradient(180deg, #1A1008 0%, var(--bg) 100%);">
     <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
       <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 20px;">Стоимость участия</h2>
       <p style="font-size: 17px; color: var(--text-2); margin-bottom: 48px;">16 мест в сезоне. Полное сопровождение от регистрации до гала-дня.</p>
       <div class="price-single" style="max-width: 480px; margin: 0 auto; background: var(--surface); border: 2px solid var(--clay); border-radius: 24px; padding: 48px 40px; box-shadow: 0 12px 48px rgba(199,91,42,.15);">
         <span class="badge badge-clay" style="margin-bottom: 20px;">Сезон 2026</span>
         <div style="font-size: 16px; color: var(--text-2); margin-bottom: 8px;">16 игроков &middot; июнь — август</div>
-        <div style="font-size: 60px; font-weight: 800; letter-spacing: -2px; margin-bottom: 8px;">59 000 &#8381;</div>
+        <div class="price-amount" style="font-size: 60px; font-weight: 800; letter-spacing: -2px; margin-bottom: 8px;">59 000 &#8381;</div>
         <div style="font-size: 14px; color: var(--text-3); margin-bottom: 36px;">за полный сезон</div>
         <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%20Skolkovo%20Night%20Clay%20League%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%3F" target="_blank" class="btn-primary" style="width: 100%; font-size: 17px; padding: 18px 36px; box-shadow: 0 8px 32px rgba(199,91,42,.25);">Подать заявку в Telegram</a>
         <div style="margin-top: 16px; font-size: 13px; color: var(--text-3);">
@@ -426,8 +448,8 @@
   </section>
 
   <!-- Footer -->
-  <footer style="border-top: 1px solid var(--border); padding: 28px 40px;">
-    <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+  <footer class="footer-inner" style="border-top: 1px solid var(--border); padding: 28px 40px;">
+    <div class="footer-content" style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
       <div>
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--text-3); margin-bottom: 6px;">SKOLKOVO NIGHT CLAY LEAGUE</div>
         <div style="font-size: 12px; color: var(--text-3);">Организатор: Долгов AI и партнёры</div>
