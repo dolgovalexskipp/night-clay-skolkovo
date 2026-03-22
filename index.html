@@ -147,6 +147,7 @@
         <a href="#rating" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Рейтинг</a>
         <a href="#playoff" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Плей-офф</a>
         <a href="#venue" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Площадка</a>
+        <a href="#players" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Участники</a>
         <a href="#faq" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">FAQ</a>
         <a href="#pricing" style="color: var(--text-2); text-decoration: none; font-size: 14px; transition: color .2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Стоимость</a>
         <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%20Skolkovo%20Night%20Clay%20League%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%3F" target="_blank" class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Подать заявку</a>
@@ -460,10 +461,70 @@
 
   <div class="divider"></div>
 
+  <!-- Players -->
+  <section id="players" class="wrap section" style="padding-top: 80px; padding-bottom: 80px;">
+    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Участники сезона</h2>
+    <p style="font-size: 17px; color: var(--text-2); line-height: 1.6; margin-bottom: 40px;">Лето 2026. 16 мест в лиге — набор открыт.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;" class="grid-4">
+      <!-- Dolgov — confirmed -->
+      <a href="players.html" style="text-decoration: none; color: inherit;">
+        <div class="card" style="padding: 0; overflow: hidden; cursor: pointer;">
+          <div style="width: 100%; height: 220px; overflow: hidden;">
+            <img src="img/dolgov-photo.jpg" alt="Александр Долгов" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+          </div>
+          <div style="padding: 16px 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="font-size: 15px; font-weight: 600;">Александр Долгов</div>
+              <span style="font-size: 12px; font-weight: 700; color: var(--clay);">4.0</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-3);">Организатор лиги &middot; 8 лет в теннисе</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Placeholder slots -->
+      <div class="card" style="padding: 0; overflow: hidden; opacity: 0.5;">
+        <div style="width: 100%; height: 220px; background: var(--surface-2); display: flex; align-items: center; justify-content: center;">
+          <div style="font-size: 40px; font-weight: 700; color: var(--border);">?</div>
+        </div>
+        <div style="padding: 16px 20px;">
+          <div style="font-size: 14px; font-weight: 500; color: var(--text-3); margin-bottom: 4px;">Ожидаем участника</div>
+          <div style="font-size: 12px; color: var(--text-3);">Место открыто</div>
+        </div>
+      </div>
+      <div class="card" style="padding: 0; overflow: hidden; opacity: 0.5;">
+        <div style="width: 100%; height: 220px; background: var(--surface-2); display: flex; align-items: center; justify-content: center;">
+          <div style="font-size: 40px; font-weight: 700; color: var(--border);">?</div>
+        </div>
+        <div style="padding: 16px 20px;">
+          <div style="font-size: 14px; font-weight: 500; color: var(--text-3); margin-bottom: 4px;">Ожидаем участника</div>
+          <div style="font-size: 12px; color: var(--text-3);">Место открыто</div>
+        </div>
+      </div>
+      <div class="card" style="padding: 0; overflow: hidden; opacity: 0.5;">
+        <div style="width: 100%; height: 220px; background: var(--surface-2); display: flex; align-items: center; justify-content: center;">
+          <div style="font-size: 40px; font-weight: 700; color: var(--border);">?</div>
+        </div>
+        <div style="padding: 16px 20px;">
+          <div style="font-size: 14px; font-weight: 500; color: var(--text-3); margin-bottom: 4px;">Ожидаем участника</div>
+          <div style="font-size: 12px; color: var(--text-3);">Место открыто</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 32px;">
+      <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%20Skolkovo%20Night%20Clay%20League%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%3F" target="_blank" class="btn-primary" style="box-shadow: 0 8px 32px rgba(199,91,42,.25);">Занять своё место в лиге</a>
+      <div style="font-size: 13px; color: var(--text-3); margin-top: 12px;">Осталось 15 мест из 16</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- FAQ -->
   <section id="faq" class="wrap section" style="padding-top: 80px; padding-bottom: 80px;">
     <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 40px;">Частые вопросы</h2>
-    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 800px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
 
       <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.3s;">
         <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text-1); list-style: none; display: flex; justify-content: space-between; align-items: center;">
@@ -542,7 +603,7 @@
         <div style="font-size: 14px; color: var(--text-3); margin-bottom: 36px;">за полный сезон</div>
         <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B2%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%20Skolkovo%20Night%20Clay%20League%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%3F" target="_blank" class="btn-primary" style="width: 100%; font-size: 17px; padding: 18px 36px; box-shadow: 0 8px 32px rgba(199,91,42,.25);">Подать заявку в Telegram</a>
         <div style="margin-top: 16px; font-size: 13px; color: var(--text-3);">
-          <a href="regulations.md" target="_blank" style="color: var(--text-2); text-decoration: underline; text-underline-offset: 3px;">Полный регламент турнира</a>
+          <a href="regulations.html" target="_blank" style="color: var(--text-2); text-decoration: underline; text-underline-offset: 3px;">Полный регламент турнира</a>
         </div>
       </div>
     </div>
@@ -558,7 +619,7 @@
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <a href="players.html" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Участники</a>
         <a href="#faq" style="font-size: 12px; color: var(--text-2); text-decoration: none;">FAQ</a>
-        <a href="regulations.md" target="_blank" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Регламент</a>
+        <a href="regulations.html" target="_blank" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Регламент</a>
         <span style="font-size: 12px; color: var(--text-3);">Summer 2026</span>
       </div>
     </div>

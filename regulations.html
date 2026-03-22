@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регламент — Skolkovo Night Clay League</title>
+  <meta name="description" content="Официальный регламент турнира Skolkovo Night Clay League — Summer 2026.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Light.ttf') format('truetype'); font-weight: 300; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Regular.ttf') format('truetype'); font-weight: 400; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Medium.ttf') format('truetype'); font-weight: 500; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-SemiBold.ttf') format('truetype'); font-weight: 600; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Bold.ttf') format('truetype'); font-weight: 700; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-ExtraBold.ttf') format('truetype'); font-weight: 800; }
+
+    :root {
+      --clay: #C75B2A;
+      --clay-light: #E07A4A;
+      --bg: #0A0A0F;
+      --surface: #141418;
+      --surface-2: #1A1A1F;
+      --border: #252529;
+      --text-1: #F5F5F4;
+      --text-2: #8A8A90;
+      --text-3: #55555A;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lufga', system-ui, sans-serif; background: var(--bg); color: var(--text-1); -webkit-font-smoothing: antialiased; }
+
+    .wrap { max-width: 820px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+
+    .doc-header { padding: 56px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .doc-title { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
+    .doc-meta { font-size: 14px; color: var(--text-3); line-height: 1.6; }
+
+    .doc-section { margin-bottom: 40px; }
+    .doc-section-num { font-size: 13px; font-weight: 600; color: var(--clay); letter-spacing: 1px; margin-bottom: 8px; }
+    .doc-section-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.3px; }
+
+    .doc-p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 12px; }
+    .doc-list { list-style: none; padding: 0; margin-bottom: 16px; }
+    .doc-list li { font-size: 15px; color: var(--text-2); line-height: 1.8; padding-left: 20px; position: relative; }
+    .doc-list li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--clay); }
+
+    .doc-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    .doc-table th { text-align: left; font-size: 13px; font-weight: 600; color: var(--text-3); padding: 12px 16px; border-bottom: 1px solid var(--border); letter-spacing: 0.5px; }
+    .doc-table td { font-size: 15px; color: var(--text-2); padding: 12px 16px; border-bottom: 1px solid rgba(37,37,41,0.5); }
+    .doc-table tr:last-child td { border-bottom: none; }
+
+    .doc-note { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; font-size: 14px; color: var(--text-2); line-height: 1.7; }
+
+    .doc-ol { list-style: none; padding: 0; margin-bottom: 16px; counter-reset: doc-counter; }
+    .doc-ol li { font-size: 15px; color: var(--text-2); line-height: 1.8; padding-left: 28px; position: relative; counter-increment: doc-counter; margin-bottom: 4px; }
+    .doc-ol li::before { content: counter(doc-counter) '.'; position: absolute; left: 0; font-weight: 600; color: var(--clay); font-size: 14px; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+    .back-link:hover { color: var(--text-1); }
+
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; background: var(--clay); color: #fff; font-weight: 600; font-size: 16px; border-radius: 12px; border: none; cursor: pointer; transition: all .3s; text-decoration: none; font-family: inherit; }
+    .btn-primary:hover { background: var(--clay-light); box-shadow: 0 8px 32px rgba(199,91,42,.3); transform: translateY(-1px); }
+
+    @media (max-width: 768px) {
+      .wrap { padding-left: 20px; padding-right: 20px; }
+      .doc-title { font-size: 24px; }
+      .doc-section-title { font-size: 18px; }
+    }
+    @media (max-width: 480px) {
+      .wrap { padding-left: 16px; padding-right: 16px; }
+      .doc-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(10,10,15,.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 820px; margin: 0 auto; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="font-weight: 700; font-size: 14px; letter-spacing: 2.5px; color: var(--text-1); text-decoration: none;">SKOLKOVO NIGHT CLAY LEAGUE</a>
+      <a href="index.html" style="font-size: 14px; color: var(--text-2); text-decoration: none;">← Главная</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <!-- Document Header -->
+    <div class="doc-header">
+      <div class="doc-title">Регламент турнира</div>
+      <div class="doc-meta">
+        Skolkovo Night Clay League — Summer 2026<br>
+        Дата вступления в силу: с момента начала регистрации участников<br>
+        Организатор: ИП Долгов Александр Александрович (далее — «Организатор»)
+      </div>
+    </div>
+
+    <!-- 1 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 1</div>
+      <div class="doc-section-title">Общие положения</div>
+      <div class="doc-p">1.1. Настоящий Регламент определяет правила организации и проведения турнира Skolkovo Night Clay League (далее — «Лига», «Турнир»), включая формат соревнований, систему начисления очков, порядок определения победителей и иные существенные условия участия.</div>
+      <div class="doc-p">1.2. Лига представляет собой мужскую парную сезонную лигу по теннису на грунтовом покрытии, проводимую в вечернем формате.</div>
+      <div class="doc-p">1.3. Ключевой принцип Лиги: Участник заявляется индивидуально, а не в составе постоянной пары. В регулярном этапе партнёры меняются, каждый участник набирает личный рейтинг.</div>
+      <div class="doc-p">1.4. Настоящий Регламент является обязательным для всех участников Турнира. Регистрация в Лиге означает безусловное принятие условий настоящего Регламента.</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 2</div>
+      <div class="doc-section-title">Площадка и сроки проведения</div>
+      <div class="doc-p">2.1. Место проведения: Школа тенниса Сколково (далее — «Площадка»).</div>
+      <div class="doc-p">2.2. Покрытие: грунт (clay). Все матчи Лиги проводятся исключительно на грунтовых кортах.</div>
+      <div class="doc-p">2.3. Сезон: июнь — август 2026 года. Точные даты начала и окончания сезона определяются Организатором и доводятся до участников не позднее чем за 14 (четырнадцать) календарных дней до начала первого тура.</div>
+      <div class="doc-p">2.4. Основной игровой день: вторник.</div>
+      <div class="doc-p">2.5. Основной игровой слот: 21:30 — 23:30.</div>
+      <div class="doc-p">2.6. Организатор оставляет за собой право вносить изменения в расписание матчей в случае неблагоприятных погодных условий или иных обстоятельств непреодолимой силы, с уведомлением участников не менее чем за 24 часа.</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 3</div>
+      <div class="doc-section-title">Участники</div>
+      <div class="doc-p">3.1. Базовый состав Лиги: 16 (шестнадцать) участников. Расширение состава до 24 (двадцати четырёх) участников возможно по решению Организатора при подтверждении спроса и наличии кортового времени.</div>
+      <div class="doc-p">3.2. К участию в Лиге допускаются игроки мужского пола уровня:</div>
+      <ul class="doc-list">
+        <li>NTRP 3.0</li>
+        <li>NTRP 3.5</li>
+        <li>NTRP 4.0</li>
+      </ul>
+      <div class="doc-p">3.3. Стартовый уровень NTRP присваивается каждому участнику до начала сезона на основании самооценки игрока и экспертной оценки Организатора. Решение Организатора по присвоению стартового уровня является окончательным.</div>
+      <div class="doc-p">3.4. Регистрация участника считается завершённой после оплаты взноса за участие в полном объёме и подтверждения Организатором.</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 4</div>
+      <div class="doc-section-title">Структура сезона</div>
+
+      <div class="doc-p" style="font-weight: 600; color: var(--text-1); margin-top: 20px;">4.1. Регулярный этап</div>
+      <div class="doc-p">4.1.1. Регулярный этап состоит из 7 (семи) туров. Один тур соответствует одной календарной неделе.</div>
+      <div class="doc-p">4.1.2. В каждом туре каждый участник проводит 1 (один) матч.</div>
+      <div class="doc-p">4.1.3. Партнёры по ходу регулярного этапа меняются. Система жеребьёвки минимизирует повторы партнёров и учитывает текущий рейтинг для обеспечения соревновательного баланса.</div>
+      <div class="doc-p">4.1.4. Результаты матчей регулярного этапа идут в личный рейтинг каждого участника.</div>
+
+      <div class="doc-p" style="font-weight: 600; color: var(--text-1); margin-top: 20px;">4.2. Формат матча</div>
+      <div class="doc-p">4.2.1. Продолжительность слота матча: 2 (два) часа.</div>
+      <div class="doc-p">4.2.2. Разминка: 15 (пятнадцать) минут перед началом матча.</div>
+      <div class="doc-p">4.2.3. Матч состоит из 2 (двух) полноценных сетов. Применяются стандартные правила на балансе (deuce), без решающего очка (no-ad scoring не применяется).</div>
+      <div class="doc-p">4.2.4. При счёте 1:1 по сетам разыгрывается решающий match tie-break до 10 (десяти) очков с разницей в 2 очка.</div>
+      <div class="doc-p">4.2.5. На каждом матче Лиги работает судья, назначенный Организатором.</div>
+
+      <div class="doc-p" style="font-weight: 600; color: var(--text-1); margin-top: 20px;">4.3. Плей-офф</div>
+      <div class="doc-p">4.3.1. По итогам регулярного этапа участники распределяются в дивизионы на основании занятого места в турнирной таблице.</div>
+      <div class="doc-p">4.3.2. В плей-офф пары становятся фиксированными и играют вместе до завершения выступления в своей сетке.</div>
+
+      <div class="doc-note">
+        <strong>При составе 16 участников:</strong><br>
+        Места 1—8 → Дивизион А (полуфиналы, матч за 3-е место, финал)<br>
+        Места 9—16 → Дивизион Б (полуфиналы, матч за 3-е место, финал)
+      </div>
+
+      <div class="doc-note">
+        <strong>При составе 24 участника:</strong><br>
+        Места 1—8 → Дивизион А<br>
+        Места 9—16 → Дивизион Б<br>
+        Места 17—24 → Bonus / Challenge Night (отдельный клубный финальный игровой вечер)
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 5</div>
+      <div class="doc-section-title">Система рейтинга и начисление очков</div>
+      <div class="doc-p">5.1. В турнирной таблице учитывается личный результат каждого участника. Очки начисляются каждому игроку пары индивидуально по итогам матча.</div>
+
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>Результат матча</th>
+            <th>Очки каждому игроку пары</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Победа 2:0 по сетам</td><td style="color: var(--clay); font-weight: 600;">3 очка</td></tr>
+          <tr><td>Победа 2:1 (через match tie-break)</td><td style="color: var(--clay); font-weight: 600;">2 очка</td></tr>
+          <tr><td>Поражение 1:2 (через match tie-break)</td><td>1 очко</td></tr>
+          <tr><td>Поражение 0:2 по сетам</td><td>0 очков</td></tr>
+        </tbody>
+      </table>
+
+      <div class="doc-p">5.2. Match tie-break не переводится в геймы для целей статистики. Он влияет исключительно на исход матча и начисление очков.</div>
+
+      <div class="doc-p" style="font-weight: 600; color: var(--text-1); margin-top: 16px;">5.3. Критерии ранжирования при равенстве очков (применяются последовательно):</div>
+      <ol class="doc-ol">
+        <li>Разница выигранных и проигранных сетов</li>
+        <li>Разница выигранных и проигранных геймов</li>
+        <li>Процент выигранных геймов</li>
+        <li>Дополнительные турнирные критерии по решению Организатора</li>
+      </ol>
+    </div>
+
+    <!-- 6 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 6</div>
+      <div class="doc-section-title">Принцип жеребьёвки</div>
+      <div class="doc-p">6.1. В регулярном этапе жеребьёвка проводится Организатором перед каждым туром с учётом следующих принципов:</div>
+      <ul class="doc-list">
+        <li>Минимизация повторов партнёров на протяжении сезона</li>
+        <li>Учёт стартового уровня NTRP при формировании пар в первых турах</li>
+        <li>Учёт текущего рейтинга и общего соревновательного баланса в последующих турах</li>
+      </ul>
+      <div class="doc-p">6.2. Решение Организатора по составу пар в каждом туре является окончательным.</div>
+    </div>
+
+    <!-- 7 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 7</div>
+      <div class="doc-section-title">Гала-день</div>
+      <div class="doc-p">7.1. Финальная часть сезона проводится в формате Гала-дня — отдельного мероприятия в дневное время.</div>
+      <div class="doc-p">7.2. Программа Гала-дня включает:</div>
+      <ul class="doc-list">
+        <li>Финал Дивизиона А</li>
+        <li>Матч за 3-е место Дивизиона А</li>
+        <li>Финал Дивизиона Б</li>
+        <li>Матч за 3-е место Дивизиона Б</li>
+        <li>Официальное закрытие сезона</li>
+        <li>Церемония награждения (кубки, медали, дипломы, призы)</li>
+      </ul>
+    </div>
+
+    <!-- 8 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 8</div>
+      <div class="doc-section-title">Состав продукта и услуги, включённые в стоимость участия</div>
+      <div class="doc-p">8.1. В стоимость участия в Лиге входит:</div>
+      <ul class="doc-list">
+        <li>Участие в полном сезоне Лиги (регулярный этап и плей-офф или Bonus / Challenge Night)</li>
+        <li>Аренда корта на все матчи участника</li>
+        <li>Официальный мяч лиги Wilson Roland Garros Clay (новые мячи на каждый матч)</li>
+        <li>Питьевая вода на каждом матче</li>
+        <li>Судья на каждом матче</li>
+        <li>Welcome pack: футболка лиги, напульсники, бутылка, полотенце</li>
+        <li>Кубки, медали, дипломы и призы по итогам сезона</li>
+        <li>Участие в церемониях открытия и закрытия сезона</li>
+        <li>Коммуникация и координация через платформу tags&talks</li>
+        <li>AI-ассистент лиги с напоминаниями, расписанием и результатами</li>
+        <li>Сайт лиги, персональная карточка игрока и статистика</li>
+      </ul>
+    </div>
+
+    <!-- 9 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 9</div>
+      <div class="doc-section-title">Стоимость участия и порядок оплаты</div>
+      <div class="doc-p">9.1. Стоимость участия в сезоне при базовом составе 16 участников: <strong style="color: var(--text-1);">59 000 (пятьдесят девять тысяч) рублей</strong>.</div>
+      <div class="doc-p">9.2. Окончательная стоимость может быть скорректирована Организатором в зависимости от итогового количества участников и кортовой сетки. Об изменении стоимости участники уведомляются до начала регистрации.</div>
+      <div class="doc-p">9.3. Оплата производится единовременно в полном объёме до начала первого тура сезона. Порядок и реквизиты оплаты предоставляются Организатором при регистрации.</div>
+      <div class="doc-p">9.4. Условия возврата денежных средств при отказе от участия определяются индивидуально по согласованию с Организатором.</div>
+    </div>
+
+    <!-- 10 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 10</div>
+      <div class="doc-section-title">Права и обязанности участников</div>
+      <div class="doc-p">10.1. Участник обязан:</div>
+      <ul class="doc-list">
+        <li>Соблюдать настоящий Регламент и нормы спортивной этики</li>
+        <li>Являться на матчи в установленное время</li>
+        <li>Иметь собственную ракетку и спортивную форму, подходящую для грунтового покрытия</li>
+        <li>Уважительно относиться к партнёрам, соперникам, судьям и организаторам</li>
+        <li>Уведомлять Организатора о невозможности участия в матче не позднее чем за 48 часов</li>
+      </ul>
+      <div class="doc-p">10.2. Участник имеет право:</div>
+      <ul class="doc-list">
+        <li>Получать актуальную информацию о расписании, результатах и своём рейтинге</li>
+        <li>Обращаться к Организатору по вопросам, связанным с проведением Лиги</li>
+        <li>Получить все услуги и материалы, указанные в Разделе 8 настоящего Регламента</li>
+      </ul>
+    </div>
+
+    <!-- 11 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 11</div>
+      <div class="doc-section-title">Ответственность и форс-мажор</div>
+      <div class="doc-p">11.1. Организатор не несёт ответственности за травмы, полученные участниками в ходе матчей. Участие в Лиге осуществляется на добровольной основе, каждый участник самостоятельно оценивает состояние своего здоровья.</div>
+      <div class="doc-p">11.2. В случае обстоятельств непреодолимой силы (неблагоприятные погодные условия, ограничения со стороны Площадки и пр.) Организатор вправе перенести, сократить или отменить отдельные туры с уведомлением участников.</div>
+      <div class="doc-p">11.3. Организатор оставляет за собой право вносить изменения в настоящий Регламент. Существенные изменения доводятся до участников не позднее чем за 7 (семь) календарных дней до их вступления в силу.</div>
+    </div>
+
+    <!-- 12 -->
+    <div class="doc-section">
+      <div class="doc-section-num">РАЗДЕЛ 12</div>
+      <div class="doc-section-title">Контактная информация</div>
+      <div class="doc-p">По всем вопросам, связанным с участием в Лиге, обращайтесь к Организатору:</div>
+      <div class="doc-p">
+        Долгов Александр Александрович<br>
+        Telegram: <a href="https://t.me/dolgovalex" target="_blank" style="color: var(--clay); text-decoration: none;">@dolgovalex</a><br>
+        Email: <a href="mailto:dolgovalex@skipp.dev" style="color: var(--clay); text-decoration: none;">dolgovalex@skipp.dev</a>
+      </div>
+    </div>
+
+    <!-- Signature -->
+    <div style="border-top: 1px solid var(--border); padding: 32px 0 80px; margin-top: 16px;">
+      <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">
+        Организатор: Долгов AI и партнёры<br>
+        Skolkovo Night Clay League — Summer 2026
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
