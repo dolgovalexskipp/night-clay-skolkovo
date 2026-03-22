@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Night Clay League — Ночная парная лига на грунте | Сколково</title>
+  <meta name="description" content="Мужская парная лига на грунте с личным рейтингом игрока. Лето 2026, Школа тенниса Сколково.">
+  <meta property="og:title" content="Night Clay League — Сколково">
+  <meta property="og:description" content="Ночная парная лига на грунте. Лето 2026.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; }
+
+    :root {
+      --clay: #C75B2A;
+      --clay-light: #E07A4A;
+      --clay-dark: #A04820;
+      --clay-glow: rgba(199, 91, 42, 0.15);
+      --bg: #0A0A0F;
+      --surface: #141418;
+      --surface-2: #1A1A1F;
+      --border: #252529;
+      --text-primary: #F5F5F4;
+      --text-secondary: #8A8A90;
+      --text-muted: #55555A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lufga', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .clay-gradient {
+      background: linear-gradient(135deg, var(--clay), var(--clay-light));
+    }
+
+    .clay-glow {
+      box-shadow: 0 8px 32px rgba(199, 91, 42, 0.25);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .card:hover {
+      border-color: rgba(199, 91, 42, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 80px;
+    }
+
+    .hero-visual {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #1A1008 0%, #2D1A0A 50%, #0A0A0F 100%);
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(199, 91, 42, 0.08) 0%, transparent 70%);
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(199, 91, 42, 0.4);
+      background: var(--surface-2);
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table-row:last-child { border-bottom: none; }
+
+    .price-card {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 48px 40px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--clay);
+      box-shadow: 0 12px 48px rgba(199, 91, 42, 0.15);
+    }
+
+    .price-card:not(.featured) {
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px;
+      background: var(--clay);
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      font-family: 'Lufga', sans-serif;
+    }
+
+    .btn-primary:hover {
+      background: var(--clay-light);
+      box-shadow: 0 8px 32px rgba(199, 91, 42, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px;
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      font-family: 'Lufga', sans-serif;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-secondary);
+      color: var(--text-primary);
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 24px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .check-item:hover {
+      border-color: rgba(199, 91, 42, 0.3);
+    }
+
+    .check-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--clay-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clay);
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .step-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: rgba(199, 91, 42, 0.15);
+      line-height: 1;
+    }
+
+    .playoff-card {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .playoff-card:hover {
+      border-color: rgba(199, 91, 42, 0.3);
+    }
+
+    .playoff-card.primary {
+      border-color: rgba(199, 91, 42, 0.4);
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-clay {
+      background: rgba(199, 91, 42, 0.15);
+      color: var(--clay);
+    }
+
+    .badge-muted {
+      background: var(--border);
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 40px !important; line-height: 1.1 !important; }
+      .section-title { font-size: 32px !important; }
+      .stats-grid { grid-template-columns: 1fr 1fr !important; }
+      .format-grid, .match-grid, .included-grid, .playoff-cols, .price-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
+      <a href="#" style="font-weight: 700; font-size: 15px; letter-spacing: 2px; color: var(--text-primary); text-decoration: none;">NIGHT CLAY LEAGUE</a>
+      <nav style="display: flex; align-items: center; gap: 32px;">
+        <a href="#format" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Формат</a>
+        <a href="#rating" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Рейтинг</a>
+        <a href="#playoff" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Плей-офф</a>
+        <a href="#pricing" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s;" onmouseover="this.style.color='#F5F5F4'" onmouseout="this.style.color='#8A8A90'">Стоимость</a>
+        <a href="#pricing" class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Оставить заявку</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section style="max-width: 1280px; margin: 0 auto; padding: 80px 40px 60px;">
+    <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+      <div style="display: inline-flex; padding: 8px 20px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); margin-bottom: 36px;">
+        <span style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">Summer 2026 &middot; Школа тенниса Сколково &middot; Clay Only</span>
+      </div>
+      <h1 class="hero-title" style="font-size: 72px; font-weight: 700; line-height: 1.05; letter-spacing: -3px; margin-bottom: 24px;">
+        Ночная парная лига<br>на грунте
+      </h1>
+      <p style="font-size: 20px; color: var(--text-secondary); line-height: 1.6; max-width: 680px; margin: 0 auto 40px; font-weight: 400;">
+        Мужская сезонная лига с личным рейтингом игрока. Партнёры меняются, результаты&nbsp;&mdash; твои. Плей-офф по дивизионам и финальный гала-день.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 60px;">
+        <a href="#pricing" class="btn-primary clay-glow">Оставить заявку</a>
+        <a href="#format" class="btn-secondary">Подробнее о формате</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px;">
+      <div class="stat-card">
+        <div style="font-size: 40px; font-weight: 700; color: var(--clay); letter-spacing: -1px; margin-bottom: 6px;">16</div>
+        <div style="font-size: 14px; color: var(--text-secondary); font-weight: 400;">игроков в сезоне</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size: 32px; font-weight: 700; color: var(--clay); letter-spacing: -0.5px; margin-bottom: 6px;">2 сета + MTB</div>
+        <div style="font-size: 14px; color: var(--text-secondary); font-weight: 400;">формат каждого матча</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size: 32px; font-weight: 700; color: var(--clay); letter-spacing: -0.5px; margin-bottom: 6px;">Clay Only</div>
+        <div style="font-size: 14px; color: var(--text-secondary); font-weight: 400;">покрытие — грунт</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size: 40px; font-weight: 700; color: var(--clay); letter-spacing: -1px; margin-bottom: 6px;">21:30</div>
+        <div style="font-size: 14px; color: var(--text-secondary); font-weight: 400;">вечерний слот начала</div>
+      </div>
+    </div>
+
+    <!-- Hero Visual Placeholder -->
+    <div class="hero-visual" style="height: 420px; display: flex; align-items: center; justify-content: center;">
+      <span style="color: var(--text-muted); font-size: 15px; font-weight: 500; position: relative; z-index: 1;">GIF / Hero Visual</span>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Format -->
+  <section id="format" style="max-width: 1280px; margin: 0 auto; padding: 80px 40px;">
+    <h2 class="section-title" style="font-size: 44px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Как устроен формат</h2>
+    <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.6; max-width: 700px; margin-bottom: 48px;">
+      Игрок заявляется сам за себя, а не постоянной парой. В регулярном этапе партнёры меняются, каждый участник набирает личный рейтинг.
+    </p>
+    <div class="format-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <div class="card" style="padding: 28px;">
+        <div style="font-size: 17px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Участие</div>
+        <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">Игрок заявляется сам за себя, а не фиксированной парой.</div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div style="font-size: 17px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Регулярка</div>
+        <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">В регулярном этапе партнёры меняются, а каждый игрок набирает личный рейтинг.</div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div style="font-size: 17px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Уровень</div>
+        <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">Лига рассчитана на игроков уровня NTRP 3.0 / 3.5 / 4.0.</div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div style="font-size: 17px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Сезон</div>
+        <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">1 неделя = 1 тур. Базовая модель — 16 игроков с расширением до 24.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Match -->
+  <section id="match" style="max-width: 1280px; margin: 0 auto; padding: 80px 40px;">
+    <h2 class="section-title" style="font-size: 44px; font-weight: 700; letter-spacing: -1px; margin-bottom: 48px;">Как проходит матч</h2>
+    <div class="match-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+      <div class="card" style="padding: 28px;">
+        <div class="step-number">01</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 12px 0 8px;">Разминка</div>
+        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">15 минут на разминку перед началом матча.</div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div class="step-number">02</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 12px 0 8px;">2 полных сета</div>
+        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Стандартные правила на балансе, без deciding point.</div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div class="step-number">03</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 12px 0 8px;">Match Tie-Break</div>
+        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">При счёте 1:1 по сетам — tie-break до 10 очков.</div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div class="step-number">04</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 12px 0 8px;">Судейство</div>
+        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">На каждом матче работает профессиональный судья.</div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div class="step-number">05</div>
+        <div style="font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 12px 0 8px;">Слот 2 часа</div>
+        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Каждый матч играется в двухчасовом вечернем слоте.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Rating -->
+  <section id="rating" style="max-width: 1280px; margin: 0 auto; padding: 80px 40px;">
+    <h2 class="section-title" style="font-size: 44px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Личный рейтинг игрока</h2>
+    <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.6; max-width: 700px; margin-bottom: 48px;">
+      В таблице учитывается личный результат игрока, а не постоянной пары. Каждый игрок набирает персональные очки по ходу сезона.
+    </p>
+    <div style="border-radius: 16px; overflow: hidden; border: 1px solid var(--border);">
+      <div class="table-row" style="background: var(--clay);">
+        <div style="padding: 16px 28px; font-weight: 600; font-size: 15px;">Результат матча</div>
+        <div style="padding: 16px 28px; font-weight: 600; font-size: 15px;">Очки каждому игроку пары</div>
+      </div>
+      <div class="table-row" style="background: var(--surface);">
+        <div style="padding: 16px 28px; font-size: 15px;">Победа 2:0</div>
+        <div style="padding: 16px 28px; font-size: 15px; font-weight: 700; color: var(--clay);">3 очка</div>
+      </div>
+      <div class="table-row" style="background: var(--surface-2);">
+        <div style="padding: 16px 28px; font-size: 15px;">Победа 2:1</div>
+        <div style="padding: 16px 28px; font-size: 15px; font-weight: 700; color: var(--clay);">2 очка</div>
+      </div>
+      <div class="table-row" style="background: var(--surface);">
+        <div style="padding: 16px 28px; font-size: 15px;">Поражение 1:2</div>
+        <div style="padding: 16px 28px; font-size: 15px; font-weight: 700; color: var(--text-secondary);">1 очко</div>
+      </div>
+      <div class="table-row" style="background: var(--surface-2);">
+        <div style="padding: 16px 28px; font-size: 15px;">Поражение 0:2</div>
+        <div style="padding: 16px 28px; font-size: 15px; font-weight: 700; color: var(--text-muted);">0 очков</div>
+      </div>
+    </div>
+    <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="card" style="padding: 28px;">
+        <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.7;">
+          В рейтинг дополнительно учитываются сетовая и геймовая статистика. У каждого участника будет своя карточка игрока, позиция в таблице и персональная статистика.
+        </div>
+      </div>
+      <div class="card" style="padding: 28px;">
+        <div style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Дополнительные критерии</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 14px; color: var(--text-secondary);">Разница по сетам</div>
+          <div style="font-size: 14px; color: var(--text-secondary);">Разница по геймам</div>
+          <div style="font-size: 14px; color: var(--text-secondary);">Процент выигранных геймов</div>
+          <div style="font-size: 14px; color: var(--text-secondary);">Дополнительные турнирные критерии</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Playoff -->
+  <section id="playoff" style="max-width: 1280px; margin: 0 auto; padding: 80px 40px;">
+    <h2 class="section-title" style="font-size: 44px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Плей-офф и гала-день</h2>
+    <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.6; max-width: 800px; margin-bottom: 48px;">
+      По итогам регулярки формируются дивизионы. В плей-офф пары фиксируются и играют вместе до конца сетки. Сезон завершается отдельным гала-днём.
+    </p>
+    <div class="playoff-cols" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="playoff-card primary">
+          <span class="badge badge-clay" style="margin-bottom: 16px; display: inline-flex;">Места 1–8</span>
+          <div style="font-size: 26px; font-weight: 700; margin-bottom: 12px;">Верхний дивизион</div>
+          <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">Полуфиналы, матч за 3-е место и финал. Сильнейшие 8 игроков сезона.</div>
+        </div>
+        <div class="playoff-card">
+          <span class="badge badge-muted" style="margin-bottom: 16px; display: inline-flex;">Места 9–16</span>
+          <div style="font-size: 26px; font-weight: 700; margin-bottom: 12px;">Нижний дивизион</div>
+          <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">Аналогичная сетка: полуфиналы, матч за 3-е место и финал.</div>
+        </div>
+      </div>
+      <div class="playoff-card" style="background: linear-gradient(180deg, #1A1008 0%, var(--surface) 100%); border-color: rgba(199, 91, 42, 0.2);">
+        <div style="font-size: 26px; font-weight: 700; margin-bottom: 16px;">Гала-день сезона</div>
+        <div style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 32px;">
+          Финальная часть сезона проводится отдельно, в дневное время. Торжественное закрытие и награждение.
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-size: 15px; font-weight: 500; color: var(--clay);">&#8594;&ensp;Финал Верхнего дивизиона</div>
+          <div style="font-size: 15px; font-weight: 500; color: var(--clay);">&#8594;&ensp;Финал Нижнего дивизиона</div>
+          <div style="font-size: 15px; font-weight: 500; color: var(--text-secondary);">&#8594;&ensp;Матчи за 3-е место</div>
+          <div style="font-size: 15px; font-weight: 500; color: var(--text-secondary);">&#8594;&ensp;Награждение и закрытие</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Included -->
+  <section id="included" style="max-width: 1280px; margin: 0 auto; padding: 80px 40px;">
+    <h2 class="section-title" style="font-size: 44px; font-weight: 700; letter-spacing: -1px; margin-bottom: 48px;">Что входит в стоимость</h2>
+    <div class="included-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Полный сезон лиги с регулярным этапом и плей-офф</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Кубки, медали, дипломы, призы и подарки</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Официальный мяч Wilson Roland Garros Clay</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Открытие и закрытие сезона</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Свежие мячи и вода на каждый матч</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">AI-ассистент, расписание и уведомления в tags&amp;talks</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Судья на каждом матче</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Сайт лиги, карточка игрока, персональная статистика</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">&#10003;</div>
+        <span style="font-size: 15px; line-height: 1.5;">Welcome pack: футболка, напульсники, бутылка, полотенце</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Pricing -->
+  <section id="pricing" style="padding: 100px 40px; background: linear-gradient(180deg, #1A1008 0%, var(--bg) 100%);">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
+      <h2 class="section-title" style="font-size: 44px; font-weight: 700; letter-spacing: -1px; margin-bottom: 56px;">Стоимость участия</h2>
+      <div class="price-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 880px; margin: 0 auto;">
+        <div class="price-card featured">
+          <span class="badge badge-clay" style="margin-bottom: 20px;">Базовый состав</span>
+          <div style="font-size: 16px; color: var(--text-secondary); margin-bottom: 8px;">16 игроков</div>
+          <div style="font-size: 56px; font-weight: 800; letter-spacing: -2px; margin-bottom: 8px;">59 000 &#8381;</div>
+          <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 32px;">за полный сезон</div>
+          <a href="#" class="btn-primary" style="width: 100%;">Оставить заявку</a>
+        </div>
+        <div class="price-card">
+          <span class="badge badge-muted" style="margin-bottom: 20px;">Расширенный</span>
+          <div style="font-size: 16px; color: var(--text-secondary); margin-bottom: 8px;">24 игрока</div>
+          <div style="font-size: 56px; font-weight: 800; letter-spacing: -2px; margin-bottom: 8px;">51 500 &#8381;</div>
+          <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 32px;">за полный сезон</div>
+          <a href="#" class="btn-secondary" style="width: 100%;">Узнать подробнее</a>
+        </div>
+      </div>
+      <p style="font-size: 14px; color: var(--text-muted); margin-top: 32px;">
+        Финальная стоимость зависит от итогового состава участников и слотной сетки.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border); padding: 32px 40px;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--text-muted);">NIGHT CLAY LEAGUE</span>
+      <div style="display: flex; gap: 24px;">
+        <span style="font-size: 13px; color: var(--text-muted);">Школа тенниса Сколково</span>
+        <span style="font-size: 13px; color: var(--text-muted);">Summer 2026</span>
+        <span style="font-size: 13px; color: var(--text-muted);">Clay Only</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
