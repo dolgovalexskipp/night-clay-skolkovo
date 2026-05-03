@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skolkovo Night Clay League — Высший дивизион парного рейтинга</title>
-  <meta name="description" content="Парная рейтинговая лига на грунте. Высший дивизион: рейтинг пары 7.0-7.5. Старт 30 мая 2026, Сколково. 79 000 руб. за сезон.">
+  <title>Skolkovo Night Clay League — Высший дивизион пар</title>
+  <meta name="description" content="Высший дивизион парного теннисного турнира в Сколково. 8 пар, 7 туров, play-off day, четверг 20:00-22:00. Сезон 2026.">
   <meta property="og:title" content="Skolkovo Night Clay League">
-  <meta property="og:description" content="Высший дивизион парного рейтинга. Старт 30 мая 2026.">
+  <meta property="og:description" content="Высший дивизион пар. 8 пар, 7 туров, play-off day.">
   <meta property="og:type" content="website">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -20,11 +20,11 @@
     :root {
       --clay: #c75b2a;
       --clay-light: #e07a4a;
-      --clay-glow: rgba(199, 91, 42, 0.15);
+      --mint: #58d2ad;
       --bg: #0a0a0f;
       --surface: #141418;
       --surface-2: #1a1a1f;
-      --surface-3: #21140d;
+      --surface-3: #1d120b;
       --border: #252529;
       --text-1: #f5f5f4;
       --text-2: #8a8a90;
@@ -36,8 +36,8 @@
     body {
       font-family: 'Lufga', system-ui, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(199, 91, 42, 0.18), transparent 28%),
-        radial-gradient(circle at left center, rgba(199, 91, 42, 0.08), transparent 22%),
+        radial-gradient(circle at top right, rgba(199, 91, 42, 0.16), transparent 24%),
+        radial-gradient(circle at left center, rgba(88, 210, 173, 0.08), transparent 20%),
         var(--bg);
       color: var(--text-1);
       -webkit-font-smoothing: antialiased;
@@ -51,89 +51,83 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 16px 36px;
+      padding: 16px 34px;
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--clay) 0%, var(--clay-light) 100%);
       color: #fff;
+      text-decoration: none;
       font-weight: 600;
       font-size: 16px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: all .3s;
-      text-decoration: none;
-      font-family: inherit;
-      box-shadow: 0 10px 34px rgba(199, 91, 42, 0.24);
+      box-shadow: 0 12px 34px rgba(199, 91, 42, 0.24);
+      transition: transform .25s, box-shadow .25s;
     }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 44px rgba(199, 91, 42, 0.32); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 40px rgba(199, 91, 42, 0.32); }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 16px 36px;
-      background: rgba(26, 26, 31, 0.9);
-      color: var(--text-2);
-      font-weight: 500;
-      font-size: 16px;
+      padding: 16px 34px;
       border-radius: 12px;
       border: 1px solid var(--border);
-      cursor: pointer;
-      transition: all .3s;
+      background: rgba(255,255,255,0.02);
+      color: var(--text-2);
       text-decoration: none;
-      font-family: inherit;
+      font-weight: 500;
+      transition: border-color .25s, color .25s;
     }
-    .btn-secondary:hover { border-color: rgba(199, 91, 42, 0.45); color: var(--text-1); }
+    .btn-secondary:hover { border-color: rgba(199, 91, 42, 0.35); color: var(--text-1); }
 
     .card {
-      background: linear-gradient(180deg, rgba(26, 26, 31, 0.94) 0%, rgba(20, 20, 24, 0.96) 100%);
+      background: linear-gradient(180deg, rgba(26, 26, 31, 0.95) 0%, rgba(20, 20, 24, 0.96) 100%);
       border: 1px solid var(--border);
       border-radius: 18px;
-      transition: border-color .3s, transform .3s;
     }
-    .card:hover { border-color: rgba(199, 91, 42, 0.3); transform: translateY(-2px); }
-
     .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
       padding: 28px;
+      min-height: 136px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 140px;
     }
-    .stat-val { font-size: 34px; font-weight: 700; color: var(--clay); letter-spacing: -1px; line-height: 1.1; }
-    .stat-lbl { font-size: 14px; color: var(--text-2); margin-top: auto; padding-top: 12px; line-height: 1.5; }
+    .stat-val { font-size: 34px; line-height: 1.05; font-weight: 700; color: var(--clay); letter-spacing: -1px; }
+    .stat-lbl { padding-top: 12px; font-size: 14px; line-height: 1.55; color: var(--text-2); }
 
-    .badge { display: inline-flex; padding: 7px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; }
-    .badge-clay { background: rgba(199, 91, 42, 0.15); color: var(--clay); }
-    .badge-muted { background: rgba(255, 255, 255, 0.04); color: var(--text-2); }
+    .badge {
+      display: inline-flex;
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-clay { background: rgba(199, 91, 42, 0.14); color: var(--clay); }
+    .badge-mint { background: rgba(88, 210, 173, 0.12); color: var(--mint); }
+    .badge-muted { background: rgba(255,255,255,0.04); color: var(--text-2); }
 
     .check-item {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 18px 22px;
-      background: var(--surface);
-      border-radius: 12px;
+      gap: 12px;
+      padding: 16px 18px;
       border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
     }
-    .check-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--clay); }
+    .check-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: var(--clay); }
 
     .slot-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
       padding: 10px 14px;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(199, 91, 42, 0.12);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(199, 91, 42, 0.14);
       color: var(--text-2);
       font-size: 13px;
     }
 
     .schedule-row {
       display: grid;
-      grid-template-columns: 120px 1.1fr 1.1fr 1.6fr;
+      grid-template-columns: 110px 1fr 1fr 1.7fr;
       gap: 16px;
       align-items: center;
       padding: 18px 20px;
@@ -142,29 +136,46 @@
       border: 1px solid var(--border);
     }
 
+    .player-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(26, 26, 31, 0.95) 0%, rgba(20, 20, 24, 0.96) 100%);
+      transition: transform .25s, border-color .25s;
+    }
+    .player-card:hover { transform: translateY(-2px); border-color: rgba(199, 91, 42, 0.32); }
+    .player-media { width: 100%; height: 260px; overflow: hidden; background: linear-gradient(180deg, #151519 0%, #20130d 100%); }
+    .player-media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .player-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: var(--clay);
+      background: radial-gradient(circle at top, rgba(199, 91, 42, 0.18), transparent 40%), #121217;
+    }
+
     .partner-logo {
-      height: 84px;
+      height: 90px;
       border-radius: 16px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
-      border: 1px dashed rgba(199, 91, 42, 0.28);
+      border: 1px dashed rgba(199, 91, 42, 0.26);
+      background: rgba(255,255,255,0.02);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--text-3);
-      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.3px;
+      font-size: 13px;
     }
-    .partner-logo img { max-width: 84%; max-height: 54px; object-fit: contain; }
-
-    .pair-card {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      min-height: 220px;
-    }
+    .partner-logo img { max-width: 84%; max-height: 56px; object-fit: contain; }
 
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item[open] { border-color: rgba(199, 91, 42, 0.3); }
@@ -173,32 +184,28 @@
     @media (max-width: 1024px) {
       .wrap { padding-left: 24px; padding-right: 24px; }
       .divider { margin: 0 24px; }
-      .hero-split, .venue-split, .format-split, .playoff-split { flex-direction: column !important; }
+      .hero-split, .format-split, .venue-split, .players-split { flex-direction: column !important; }
       .hero-media { width: 100% !important; }
       .schedule-row { grid-template-columns: 1fr 1fr; }
     }
-
     @media (max-width: 768px) {
       .wrap { padding-left: 20px; padding-right: 20px; }
       .divider { margin: 0 20px; }
-      .hero-title { font-size: 34px !important; letter-spacing: -1.4px !important; }
-      .hero-copy { font-size: 16px !important; }
+      .hero-title { font-size: 36px !important; letter-spacing: -1.5px !important; }
       .section-title { font-size: 28px !important; }
+      .hero-copy { font-size: 16px !important; }
       .hero-btns { flex-direction: column !important; align-items: stretch !important; }
       .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr !important; }
       .schedule-row { grid-template-columns: 1fr; gap: 8px; }
       .schedule-label { font-size: 12px !important; color: var(--text-3) !important; margin-bottom: 2px; }
-      .stat-card { min-height: unset !important; }
       .nav-links { display: none !important; }
     }
-
     @media (max-width: 480px) {
       .wrap { padding-left: 16px; padding-right: 16px; }
       .divider { margin: 0 16px; }
       .hero-title { font-size: 30px !important; }
       .section-title { font-size: 24px !important; }
       .btn-primary, .btn-secondary { padding: 14px 20px !important; font-size: 15px !important; }
-      .stat-card, .pair-card, .card { padding-left: 18px !important; padding-right: 18px !important; }
     }
   </style>
 </head>
@@ -209,12 +216,12 @@
       <a href="#" style="font-weight: 700; font-size: 14px; letter-spacing: 2.4px; color: var(--text-1); text-decoration: none;">SKOLKOVO NIGHT CLAY LEAGUE</a>
       <nav class="nav-links" style="display: flex; align-items: center; gap: 24px;">
         <a href="#format" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Формат</a>
-        <a href="#divisions" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Дивизионы</a>
         <a href="#schedule" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Расписание</a>
+        <a href="#players" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Игроки</a>
+        <a href="#venue" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Площадка</a>
         <a href="#partners" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Партнеры</a>
-        <a href="#pairs" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Пары</a>
         <a href="#pricing" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Стоимость</a>
-        <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Skolkovo%20Night%20Clay%20League" target="_blank" class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Заявить пару</a>
+        <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Night%20Clay%20League" target="_blank" class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Заявить пару</a>
       </nav>
     </div>
   </header>
@@ -222,51 +229,52 @@
   <section class="wrap" style="padding-top: 72px; padding-bottom: 56px;">
     <div class="hero-split" style="display: flex; gap: 48px; align-items: center;">
       <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-start;">
-        <div class="badge badge-clay" style="margin-bottom: 24px;">Высший дивизион • рейтинг пары 7.0-7.5</div>
+        <div class="badge badge-clay" style="margin-bottom: 24px;">Высший дивизион • 8 пар • сезон 2026</div>
         <h1 class="hero-title" style="font-size: 62px; font-weight: 700; line-height: 1.03; letter-spacing: -2.5px; margin-bottom: 18px;">
-          Ночная парная лига с рейтингом фиксированных пар
+          Ночная парная лига на грунте в Сколково
         </h1>
-        <p class="hero-copy" style="font-size: 18px; color: var(--text-2); line-height: 1.7; max-width: 580px; margin-bottom: 32px;">
-          Теперь играем не в личный зачет, а в турнир постоянных пар. Высший дивизион собирает пары среднего любительского уровня, открывает сезон 30 мая 2026 и ведет их через 7 туров регулярки к финальному плей-офф дню в Сколково.
+        <p class="hero-copy" style="font-size: 18px; color: var(--text-2); line-height: 1.7; max-width: 590px; margin-bottom: 32px;">
+          8 фиксированных пар, 7 туров регулярки, вечерний слот по четвергам и отдельный финальный день с полуфиналами, финалом и награждением. Высший дивизион собран под пары рейтинга 7.0-7.5.
         </p>
         <div class="hero-btns" style="display: flex; gap: 14px; margin-bottom: 26px;">
-          <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Skolkovo%20Night%20Clay%20League" target="_blank" class="btn-primary">Заявить пару</a>
-          <a href="#schedule" class="btn-secondary">Смотреть календарь</a>
+          <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Night%20Clay%20League" target="_blank" class="btn-primary">Заявить пару</a>
+          <a href="#players" class="btn-secondary">Смотреть состав</a>
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-          <div class="slot-pill">Старт: 30 мая 2026, суббота</div>
-          <div class="slot-pill">Игровой день: четверг, 21:30-23:30</div>
-          <div class="slot-pill">Стоимость: 79 000 ₽</div>
+          <div class="slot-pill">Старт: 30 мая 2026</div>
+          <div class="slot-pill">Четверг, 20:00-22:00</div>
+          <div class="slot-pill">Play-off day: 18 июля 2026</div>
+          <div class="slot-pill">79 000 ₽ за сезон</div>
         </div>
       </div>
       <div class="hero-media" style="flex: 0 0 520px; max-width: 100%;">
         <div style="position: relative; height: 500px; border-radius: 28px; overflow: hidden; border: 1px solid rgba(199, 91, 42, 0.28);">
-          <img src="img/hero.jpg" alt="Skolkovo Night Clay League" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="img/hero.jpg" alt="Night Clay League" style="width: 100%; height: 100%; object-fit: cover;">
           <div style="position: absolute; inset: auto 0 0 0; padding: 24px; background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 15, 0.92) 100%);">
-            <div style="font-size: 13px; color: var(--text-2); margin-bottom: 6px;">Формат сезона 2026</div>
-            <div style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">8 пар • 7 туров • play-off day</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Открытие лиги, нетворкинг, регулярный сезон и отдельный финальный день с полуфиналами и финалом.</div>
+            <div style="font-size: 13px; color: var(--text-2); margin-bottom: 6px;">Площадка-организатор</div>
+            <div style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Школа тенниса Сколково</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Открытие лиги, регулярные туры, клубная атмосфера и финальный игровой день на одной площадке.</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="grid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px;">
-      <div class="stat-card">
+      <div class="card stat-card">
         <div class="stat-val">8 пар</div>
-        <div class="stat-lbl">Базовый сетап сезона: 16 игроков, один дивизион, 7 туров регулярки.</div>
+        <div class="stat-lbl">16 игроков в одном дивизионе, без лишней дробности и с полной сезонной сеткой.</div>
       </div>
-      <div class="stat-card">
+      <div class="card stat-card">
         <div class="stat-val" style="font-size: 30px;">7.0-7.5</div>
-        <div class="stat-lbl">Целевой рейтинг пары в высшем дивизионе.</div>
+        <div class="stat-lbl">Рейтинг пары для высшего дивизиона и плотного, ровного матчапа по уровню.</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-val" style="font-size: 28px;">30 мая</div>
-        <div class="stat-lbl">Открытие сезона, вечеринка, нетворкинг и первый тур.</div>
+      <div class="card stat-card">
+        <div class="stat-val" style="font-size: 28px;">7 туров</div>
+        <div class="stat-lbl">Каждая пара играет с каждой в регулярке, дальше топ-4 выходит в плей-офф.</div>
       </div>
-      <div class="stat-card">
+      <div class="card stat-card">
         <div class="stat-val">79 000 ₽</div>
-        <div class="stat-lbl">Полный сезон на пару в текущем позиционировании лендинга.</div>
+        <div class="stat-lbl">Сезон с кортами, судейством, мячами, мерчем, AI-сопровождением и награждением.</div>
       </div>
     </div>
   </section>
@@ -275,81 +283,58 @@
 
   <section id="format" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
     <div class="format-split" style="display: flex; gap: 24px; align-items: stretch;">
-      <div style="flex: 1.1;">
-        <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Новый формат сезона</h2>
+      <div style="flex: 1.05;">
+        <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Как устроен турнир</h2>
         <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 640px; margin-bottom: 36px;">
-          Ключевое изменение концепции: в лиге больше нет индивидуального зачета. Пара заявляется и играет весь сезон фиксированным составом, набирает очки как единая команда и проходит в плей-офф по месту в парном рейтинге.
+          Пара заходит в сезон фиксированным составом, играет полный круг регулярки, набирает очки в командный рейтинг и борется за место в топ-4. Это короткий, плотный, понятный сезон без пустых туров и без случайных партнеров.
         </p>
         <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
           <div class="card" style="padding: 28px;">
-            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Фиксированные пары</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Состав пары закрепляется на сезон. Играете, набираете очки и двигаетесь по таблице вместе.</div>
-          </div>
-          <div class="card" style="padding: 28px;">
-            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Парный рейтинг</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Учитывается результат команды. Победы, разница по сетам и геймам работают на рейтинг пары.</div>
+            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Фиксированная пара</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Играете одним составом весь сезон. Очки, таблица и плей-офф идут на команду.</div>
           </div>
           <div class="card" style="padding: 28px;">
             <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Высший дивизион</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Текущий запуск лендинга рассчитан на пары рейтинга 7.0-7.5 как на основной пул сезона.</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Пары рейтинга 7.0-7.5. Достаточно высокий уровень, чтобы матчи были конкурентными с первого тура.</div>
           </div>
           <div class="card" style="padding: 28px;">
-            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Игровой ритм</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Открытие в субботу, дальше регулярные туры по четвергам, затем отдельный play-off day.</div>
+            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">7 туров регулярки</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">При 8 парах каждая играет с каждой один раз. После этого сетка плей-офф собирается без доборов и доп. этапов.</div>
+          </div>
+          <div class="card" style="padding: 28px;">
+            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 10px;">Play-off day</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Полуфиналы, матч за 3-е место, финал и награждение в один отдельный финальный день.</div>
           </div>
         </div>
       </div>
-      <div style="flex: 0.9;">
+      <div style="flex: 0.95;">
         <div class="card" style="padding: 32px; height: 100%; background: linear-gradient(180deg, var(--surface-3) 0%, var(--surface) 100%);">
-          <div class="badge badge-muted" style="margin-bottom: 14px;">Как проходит матч</div>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="badge badge-mint" style="margin-bottom: 14px;">Формат матча</div>
+          <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px;">
             <div>
-              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">2 полных сета + MTB до 10</div>
-              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">При счете 1:1 по сетам играется решающий match tie-break до 10 очков.</div>
+              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Четверг, 20:00-22:00</div>
+              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Основной вечерний слот для регулярных туров в Школе тенниса Сколково.</div>
             </div>
             <div>
-              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Судья и слот 2 часа</div>
-              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Каждый матч проходит в организованном двухчасовом слоте с судейством.</div>
+              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">15 минут разминки</div>
+              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Быстрый вход в матч, без растягивания слота и без сдвигов по сетке.</div>
             </div>
             <div>
-              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Очки в таблицу пары</div>
-              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Победа 2:0 = 3 очка, победа 2:1 = 2, поражение 1:2 = 1, поражение 0:2 = 0.</div>
+              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">2 полных сета</div>
+              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Игра по классике, на счете 1:1 по сетам — match tie-break до 10 очков.</div>
             </div>
             <div>
-              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Плей-офф по итогам регулярки</div>
-              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Лучшие пары выходят в полуфиналы и играют за титул в финальный день сезона.</div>
+              <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Судья и официальный матч-лист</div>
+              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Каждая игра в рамках организованного турнира, а не просто аренды корта.</div>
             </div>
           </div>
+          <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Победа 2:0 — 3 очка</span></div>
+            <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Победа 2:1 — 2 очка</span></div>
+            <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Поражение 1:2 — 1 очко</span></div>
+            <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Поражение 0:2 — 0 очков</span></div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section id="divisions" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
-    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Линейка дивизионов</h2>
-    <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 760px; margin-bottom: 40px;">
-      Лендинг сейчас сфокусирован на высшем дивизионе, но структура уже закладывает следующие уровни для масштабирования серии.
-    </p>
-    <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-      <div class="card" style="padding: 32px; border-color: rgba(199, 91, 42, 0.38);">
-        <div class="badge badge-clay" style="margin-bottom: 16px;">Текущий запуск</div>
-        <div style="font-size: 28px; font-weight: 700; margin-bottom: 10px;">Высший дивизион</div>
-        <div style="font-size: 16px; color: var(--clay); margin-bottom: 12px;">Рейтинг пары 7.0-7.5</div>
-        <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Средний любительский уровень для сыгранных пар, которые хотят регулярный сезон и конкурентный плей-офф.</div>
-      </div>
-      <div class="card" style="padding: 32px;">
-        <div class="badge badge-muted" style="margin-bottom: 16px;">Следующий уровень</div>
-        <div style="font-size: 28px; font-weight: 700; margin-bottom: 10px;">Премьер-дивизион</div>
-        <div style="font-size: 16px; color: var(--clay); margin-bottom: 12px;">Рейтинг пары 7.5-8.0</div>
-        <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Более интенсивный соревновательный пул для сильных любительских и полупрофессиональных составов.</div>
-      </div>
-      <div class="card" style="padding: 32px;">
-        <div class="badge badge-muted" style="margin-bottom: 16px;">Старший уровень</div>
-        <div style="font-size: 28px; font-weight: 700; margin-bottom: 10px;">Professional</div>
-        <div style="font-size: 16px; color: var(--clay); margin-bottom: 12px;">Рейтинг пары 8.5+</div>
-        <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Дивизион для пар, которым уже нужен матчинг с игроками профессионального уровня.</div>
       </div>
     </div>
   </section>
@@ -359,120 +344,132 @@
   <section id="schedule" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
     <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Расписание сезона 2026</h2>
     <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 780px; margin-bottom: 36px;">
-      Базовая модель на 16 игроков / 8 пар. Даты посчитаны от старта в субботу, <strong style="color: var(--text-1);">30 мая 2026</strong>, с регулярным слотом по четвергам. Регулярка занимает 7 туров, после чего следует отдельный play-off day.
+      Стартуем в субботу, 30 мая 2026. Дальше играем по четвергам, а финальную сетку выводим в отдельный play-off day.
     </p>
 
     <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px;">
-      <div class="slot-pill">Открытие: 30 мая 2026, суббота</div>
-      <div class="slot-pill">Регулярка: 4 июня - 9 июля 2026</div>
-      <div class="slot-pill">Финальный день: 18 июля 2026, суббота</div>
+      <div class="slot-pill">30 мая — открытие, нетворкинг, тур 1</div>
+      <div class="slot-pill">4 июня - 9 июля — регулярка</div>
+      <div class="slot-pill">18 июля — полуфиналы, финал, награждение</div>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px;">
       <div class="schedule-row">
-        <div>
-          <div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div>
-          <div style="font-size: 16px; font-weight: 700;">Тур 1</div>
-        </div>
-        <div>
-          <div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div>
-          <div style="font-size: 15px; color: var(--text-1);">30 мая 2026</div>
-        </div>
-        <div>
-          <div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div>
-          <div style="font-size: 15px; color: var(--text-1);">Суббота</div>
-        </div>
-        <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Открытие лиги, welcome-вечеринка, нетворкинг и стартовый тур сезона.</div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Тур</div><div style="font-size: 16px; font-weight: 700;">Тур 1</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">30 мая 2026</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Суббота</div></div>
+        <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Открытие лиги, вечеринка, знакомство состава и стартовый матч-тур.</div>
       </div>
       <div class="schedule-row">
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div><div style="font-size: 16px; font-weight: 700;">Тур 2</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Тур</div><div style="font-size: 16px; font-weight: 700;">Тур 2</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">4 июня 2026</div></div>
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Четверг</div></div>
-        <div style="font-size: 14px; color: var(--text-2);">Второй тур регулярки, основной поздний слот 21:30-23:30.</div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Слот</div><div style="font-size: 15px; color: var(--text-1);">20:00-22:00</div></div>
+        <div style="font-size: 14px; color: var(--text-2);">Четверговый вечерний слот.</div>
       </div>
       <div class="schedule-row">
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div><div style="font-size: 16px; font-weight: 700;">Тур 3</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Тур</div><div style="font-size: 16px; font-weight: 700;">Тур 3</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">11 июня 2026</div></div>
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Четверг</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Слот</div><div style="font-size: 15px; color: var(--text-1);">20:00-22:00</div></div>
         <div style="font-size: 14px; color: var(--text-2);">Третий тур регулярки.</div>
       </div>
       <div class="schedule-row">
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div><div style="font-size: 16px; font-weight: 700;">Тур 4</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Тур</div><div style="font-size: 16px; font-weight: 700;">Тур 4</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">18 июня 2026</div></div>
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Четверг</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Слот</div><div style="font-size: 15px; color: var(--text-1);">20:00-22:00</div></div>
         <div style="font-size: 14px; color: var(--text-2);">Четвертый тур регулярки.</div>
       </div>
       <div class="schedule-row">
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div><div style="font-size: 16px; font-weight: 700;">Тур 5</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Тур</div><div style="font-size: 16px; font-weight: 700;">Тур 5</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">25 июня 2026</div></div>
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Четверг</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Слот</div><div style="font-size: 15px; color: var(--text-1);">20:00-22:00</div></div>
         <div style="font-size: 14px; color: var(--text-2);">Пятый тур регулярки.</div>
       </div>
       <div class="schedule-row">
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div><div style="font-size: 16px; font-weight: 700;">Тур 6</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Тур</div><div style="font-size: 16px; font-weight: 700;">Тур 6</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">2 июля 2026</div></div>
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Четверг</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Слот</div><div style="font-size: 15px; color: var(--text-1);">20:00-22:00</div></div>
         <div style="font-size: 14px; color: var(--text-2);">Шестой тур регулярки.</div>
       </div>
       <div class="schedule-row">
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div><div style="font-size: 16px; font-weight: 700;">Тур 7</div></div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Тур</div><div style="font-size: 16px; font-weight: 700;">Тур 7</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">9 июля 2026</div></div>
-        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Четверг</div></div>
-        <div style="font-size: 14px; color: var(--text-2);">Закрытие регулярного этапа и фиксация сетки плей-офф.</div>
+        <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Слот</div><div style="font-size: 15px; color: var(--text-1);">20:00-22:00</div></div>
+        <div style="font-size: 14px; color: var(--text-2);">Закрываем регулярку и фиксируем топ-4.</div>
       </div>
       <div class="schedule-row" style="border-color: rgba(199, 91, 42, 0.32); background: linear-gradient(180deg, rgba(33, 20, 13, 0.96) 0%, rgba(20, 20, 24, 0.96) 100%);">
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Этап</div><div style="font-size: 16px; font-weight: 700;">Play-off day</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">Дата</div><div style="font-size: 15px; color: var(--text-1);">18 июля 2026</div></div>
         <div><div class="schedule-label" style="font-size: 13px; color: var(--text-3);">День</div><div style="font-size: 15px; color: var(--text-1);">Суббота</div></div>
-        <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Полуфиналы, финал, матч за 3-е место, церемония закрытия и награждение. В лендинге заложено как единый финальный день сезона.</div>
-      </div>
-    </div>
-
-    <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-      <div class="card" style="padding: 28px;">
-        <div class="badge badge-clay" style="margin-bottom: 12px;">Сценарий 16 игроков</div>
-        <div style="font-size: 22px; font-weight: 700; margin-bottom: 10px;">8 пар / 7 туров</div>
-        <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Полный круговой этап: каждая пара играет с каждой один раз. После этого топ-4 пары выходят в плей-офф.</div>
-      </div>
-      <div class="card" style="padding: 28px;">
-        <div class="badge badge-muted" style="margin-bottom: 12px;">Сценарий расширения</div>
-        <div style="font-size: 22px; font-weight: 700; margin-bottom: 10px;">12 пар / 11 туров</div>
-        <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Если масштабируемся до 24 игроков, регулярка расширяется до 11 туров. Этот сценарий уже обозначен на лендинге, но текущая сетка сезона собрана под 8 пар.</div>
+        <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Полуфиналы, матч за 3-е место, финал, награждение и закрытие сезона.</div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section id="playoff" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
-    <div class="playoff-split" style="display: flex; gap: 24px;">
-      <div style="flex: 1;">
-        <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Как выглядит плей-офф</h2>
-        <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 640px; margin-bottom: 34px;">
-          Для базовой модели на 8 пар логично завершать регулярку после 7 туров и выводить лучшие 4 пары в финальный этап. Это дает понятную сезонную драматургию: длинная таблица, сжатый финальный день и титульный матч.
+  <section id="players" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
+    <div class="players-split" style="display: flex; gap: 24px; align-items: flex-start;">
+      <div style="flex: 0 0 360px;">
+        <div class="badge badge-mint" style="margin-bottom: 16px;">Пара в сезоне</div>
+        <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 14px;">Игроки и пары</h2>
+        <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; margin-bottom: 26px;">
+          В лиге важен не только слот в таблице, но и состав. Пара `Долгов / Сорокин` уже заведена как живая карточка, в которую можно зайти и посмотреть детали игроков.
         </p>
-        <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div class="card" style="padding: 28px;">
-            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 8px;">Полуфиналы</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">1-е место против 4-го, 2-е против 3-го. Обе пары получают право бороться за титул в один финальный игровой день.</div>
-          </div>
-          <div class="card" style="padding: 28px;">
-            <div style="font-size: 16px; font-weight: 600; color: var(--clay); margin-bottom: 8px;">Финал и бронза</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Победители полуфиналов играют за титул, проигравшие разыгрывают 3-е место. После матчей проходит закрытие сезона.</div>
-          </div>
-        </div>
+        <a href="players.html" class="btn-secondary">Открыть карточку пары</a>
       </div>
-      <div style="flex: 0.92;">
-        <div class="card" style="padding: 32px; background: linear-gradient(180deg, #1a1008 0%, var(--surface) 100%); border-color: rgba(199, 91, 42, 0.24);">
-          <div class="badge badge-clay" style="margin-bottom: 14px;">Финальный день</div>
-          <div style="font-size: 28px; font-weight: 700; margin-bottom: 12px;">18 июля 2026</div>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="font-size: 15px; color: var(--text-2); line-height: 1.6;">• Полуфинал 1</div>
-            <div style="font-size: 15px; color: var(--text-2); line-height: 1.6;">• Полуфинал 2</div>
-            <div style="font-size: 15px; color: var(--text-2); line-height: 1.6;">• Матч за 3-е место</div>
-            <div style="font-size: 15px; color: var(--text-2); line-height: 1.6;">• Финал высшего дивизиона</div>
-            <div style="font-size: 15px; color: var(--text-2); line-height: 1.6;">• Награждение, партнерская программа, закрытие сезона</div>
-          </div>
+      <div style="flex: 1;">
+        <div class="grid-3" style="display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 16px;">
+          <a href="players.html" class="player-card">
+            <div class="player-media">
+              <img src="img/dolgov-photo.jpg" alt="Александр Долгов">
+            </div>
+            <div style="padding: 20px 22px 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <div style="font-size: 21px; font-weight: 700;">Долгов / Сорокин</div>
+                <span class="badge badge-clay">7.2</span>
+              </div>
+              <div style="font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px;">Сформированная пара высшего дивизиона. Клик по карточке открывает состав, роли, стиль игры и базовый профиль пары.</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span class="badge badge-muted">Высший дивизион</span>
+                <span class="badge badge-muted">Подтверждена</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="players.html#alex" class="player-card">
+            <div class="player-media">
+              <img src="img/dolgov-photo.jpg" alt="Александр Долгов">
+            </div>
+            <div style="padding: 18px 20px 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <div style="font-size: 17px; font-weight: 700;">Александр Долгов</div>
+                <span style="font-size: 13px; color: var(--clay); font-weight: 700;">4.0</span>
+              </div>
+              <div style="font-size: 13px; color: var(--text-3); margin-bottom: 12px;">Правша • агрессивный форхенд</div>
+              <div style="font-size: 13px; color: var(--text-2); line-height: 1.7;">Организатор лиги, опытный любительский игрок и часть подтвержденного состава пары.</div>
+            </div>
+          </a>
+
+          <a href="players.html#egor" class="player-card">
+            <div class="player-media">
+              <div class="player-placeholder">ES</div>
+            </div>
+            <div style="padding: 18px 20px 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <div style="font-size: 17px; font-weight: 700;">Егор Сорокин</div>
+                <span style="font-size: 13px; color: var(--clay); font-weight: 700;">3.2</span>
+              </div>
+              <div style="font-size: 13px; color: var(--text-3); margin-bottom: 12px;">Правша • универсальный корт</div>
+              <div style="font-size: 13px; color: var(--text-2); line-height: 1.7;">Второй игрок стартовой пары. Фото можно заменить, как только пришлешь исходник.</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="grid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px;">
+          <div class="card" style="padding: 20px; opacity: 0.72;"><div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Пара #2</div><div style="font-size: 13px; color: var(--text-2);">Свободный слот под заявленную пару</div></div>
+          <div class="card" style="padding: 20px; opacity: 0.72;"><div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Пара #3</div><div style="font-size: 13px; color: var(--text-2);">Свободный слот под заявленную пару</div></div>
+          <div class="card" style="padding: 20px; opacity: 0.72;"><div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Пара #4</div><div style="font-size: 13px; color: var(--text-2);">Свободный слот под заявленную пару</div></div>
+          <div class="card" style="padding: 20px; opacity: 0.72;"><div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Пара #5-8</div><div style="font-size: 13px; color: var(--text-2);">Остальные места открыты под набор</div></div>
         </div>
       </div>
     </div>
@@ -481,43 +478,45 @@
   <div class="divider"></div>
 
   <section id="venue" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
-    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Площадка и продукт</h2>
-    <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 700px; margin-bottom: 40px;">
-      Все матчи проходят в Школе тенниса Сколково. По данным площадки, это двухэтажный премиальный клуб на 4 000 м² с открытыми и крытыми кортами, lounge-инфраструктурой и удобным доступом внутри инновационного центра.
+    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Школа тенниса Сколково</h2>
+    <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 760px; margin-bottom: 40px;">
+      Основная площадка и основной организатор турнира. Здесь проходят туры, здесь же собираем финальный день сезона.
     </p>
     <div class="venue-split" style="display: flex; gap: 24px; align-items: stretch;">
-      <div class="card" style="flex: 1.08; padding: 32px;">
-        <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap;">
-          <img src="img/venue/skolkovo-logo-white.png" alt="Школа тенниса Сколково" style="width: 210px; max-width: 100%; height: auto; border-radius: 12px;">
-          <div>
-            <div style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">Школа тенниса Сколково</div>
-            <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Официальная площадка лиги 2026</div>
+      <div style="flex: 1.08;" class="card">
+        <div style="padding: 32px;">
+          <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap;">
+            <img src="img/venue/skolkovo-logo-white.png" alt="Школа тенниса Сколково" style="width: 220px; max-width: 100%; height: auto; border-radius: 12px;">
+            <div>
+              <div style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">Школа тенниса Сколково</div>
+              <div style="font-size: 13px; color: var(--text-3);">Площадка-организатор сезона 2026</div>
+            </div>
           </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">5 открытых кортов с покрытием clay</span></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">4 крытых корта с покрытием Deco Turf Hard</span></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Бесплатная парковка, lounge-зоны, фитнес-бар и SPA</span></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Работают ежедневно с 6:00 до 2:00</span></div>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px;">
-          <div class="card" style="padding: 18px; background: rgba(255,255,255,0.02);">
-            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 6px;">Адрес</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Москва, ЗАО, ИЦ Сколково, ул. Большой Бульвар, 44</div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">5 открытых кортов с покрытием clay</span></div>
+            <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">4 крытых корта с покрытием Deco Turf Hard</span></div>
+            <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Бесплатная парковка, lounge-зоны, фитнес-бар и SPA</span></div>
+            <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Режим работы площадки: ежедневно с 6:00 до 2:00</span></div>
           </div>
-          <div class="card" style="padding: 18px; background: rgba(255,255,255,0.02);">
-            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 6px;">Контакты</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">+7 (495) 260-90-90<br>tennis@schoolskolkovo.ru</div>
+          <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px;">
+            <div class="card" style="padding: 18px; background: rgba(255,255,255,0.02);">
+              <div style="font-size: 12px; color: var(--text-3); margin-bottom: 6px;">Адрес</div>
+              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Москва, ИЦ Сколково, ул. Большой Бульвар, 44</div>
+            </div>
+            <div class="card" style="padding: 18px; background: rgba(255,255,255,0.02);">
+              <div style="font-size: 12px; color: var(--text-3); margin-bottom: 6px;">Контакты</div>
+              <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">+7 (495) 260-90-90<br>tennis@schoolskolkovo.ru</div>
+            </div>
           </div>
+          <a href="https://skolkovotennis.ru/" target="_blank" style="display: inline-flex; margin-top: 24px; color: var(--clay); text-decoration: none; font-size: 14px; font-weight: 600;">skolkovotennis.ru →</a>
         </div>
-        <a href="https://skolkovotennis.ru/" target="_blank" style="display: inline-flex; margin-top: 24px; color: var(--clay); text-decoration: none; font-size: 14px; font-weight: 600;">skolkovotennis.ru →</a>
       </div>
       <div style="flex: 0.92; display: flex; flex-direction: column; gap: 16px;">
         <div class="card" style="padding: 0; overflow: hidden;">
-          <img src="img/venue/skolkovo-court-1.jpg" alt="Корты Школы тенниса Сколково" style="width: 100%; height: 320px; object-fit: cover;">
+          <img src="img/venue/skolkovo-court-1.jpg" alt="Школа тенниса Сколково" style="width: 100%; height: 320px; object-fit: cover;">
           <div style="padding: 20px 24px;">
-            <div style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Клубная инфраструктура площадки</div>
-            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">На сайте площадки отдельно заявлены открытые clay-корты, крытые корты, фитнес-зал, SPA-комплекс и зоны отдыха для игроков.</div>
+            <div style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Клубная инфраструктура</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Площадка рассчитана не только на матчи, но и на комфортный длинный сезон: сбор игроков, зрительский контур, отдых между турами и финальный день.</div>
           </div>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
@@ -527,11 +526,11 @@
           <div class="card" style="padding: 24px;">
             <div style="font-size: 20px; font-weight: 700; margin-bottom: 16px;">Что входит в сезон</div>
             <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Регулярка и плей-офф</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">7 туров + play-off day</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Судья на каждом матче</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Новые мячи и вода</span></div>
               <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Welcome pack и мерч</span></div>
-              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Мячи, вода и судейство</span></div>
-              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">AI-ассистент и чат</span></div>
-              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Награждение и подарки</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">AI-ассистент, чат, таблица</span></div>
             </div>
           </div>
         </div>
@@ -542,127 +541,19 @@
   <div class="divider"></div>
 
   <section id="partners" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
-    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Спонсоры и партнеры</h2>
+    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Партнеры</h2>
     <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 760px; margin-bottom: 36px;">
-      Первый подтвержденный партнер площадки уже вынесен в сетку. Остальные слоты оставлены под титульного партнера дивизиона, бренд экипировки, wellness-направление и призовой пул финального дня.
+      Школа тенниса Сколково стоит в основе проекта. Остальные слоты открыты под экипировку, wellness, призовой пул и титульных партнеров сезона.
     </p>
     <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 18px;">
       <div class="partner-logo" style="border-style: solid; border-color: rgba(88, 210, 173, 0.28); background: linear-gradient(180deg, rgba(17, 24, 24, 0.96) 0%, rgba(20, 20, 24, 0.96) 100%);">
         <img src="img/venue/skolkovo-logo-white.png" alt="Школа тенниса Сколково">
       </div>
-      <div class="partner-logo">Logo Slot 02</div>
-      <div class="partner-logo">Logo Slot 03</div>
-      <div class="partner-logo">Logo Slot 04</div>
-      <div class="partner-logo">Logo Slot 05</div>
-      <div class="partner-logo">Logo Slot 06</div>
-    </div>
-    <div class="card" style="padding: 24px;">
-      <div style="font-size: 15px; color: var(--text-2); line-height: 1.7;">
-        Школа тенниса Сколково добавлена как площадка-организатор. Дальше сюда можно ставить реальные логотипы спонсоров без переделки структуры лендинга.
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section id="pairs" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
-    <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Пары сезона</h2>
-    <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; margin-bottom: 40px;">
-      Сетка собрана на 8 пар. Ниже можно держать подтвержденные составы, рейтинг пары и статус участия.
-    </p>
-    <div class="grid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-      <div class="card pair-card">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-clay">Подтверждена</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.2</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #1</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Александр Долгов + партнер</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Можно заменить именами игроков, фото пары и кратким профилем состава.</div>
-      </div>
-      <div class="card pair-card" style="opacity: 0.72;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-muted">Открыт слот</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.0-7.5</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #2</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Место под заявленную пару</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Слот под название команды, рейтинг пары и город/комьюнити.</div>
-      </div>
-      <div class="card pair-card" style="opacity: 0.72;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-muted">Открыт слот</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.0-7.5</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #3</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Место под заявленную пару</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Слот под название команды, рейтинг пары и город/комьюнити.</div>
-      </div>
-      <div class="card pair-card" style="opacity: 0.72;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-muted">Открыт слот</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.0-7.5</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #4</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Место под заявленную пару</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Слот под название команды, рейтинг пары и город/комьюнити.</div>
-      </div>
-      <div class="card pair-card" style="opacity: 0.72;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-muted">Открыт слот</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.0-7.5</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #5</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Место под заявленную пару</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Слот под название команды, рейтинг пары и город/комьюнити.</div>
-      </div>
-      <div class="card pair-card" style="opacity: 0.72;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-muted">Открыт слот</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.0-7.5</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #6</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Место под заявленную пару</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Слот под название команды, рейтинг пары и город/комьюнити.</div>
-      </div>
-      <div class="card pair-card" style="opacity: 0.72;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-muted">Открыт слот</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.0-7.5</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #7</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Место под заявленную пару</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Слот под название команды, рейтинг пары и город/комьюнити.</div>
-      </div>
-      <div class="card pair-card" style="opacity: 0.72;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span class="badge badge-muted">Открыт слот</span>
-          <span style="font-size: 13px; color: var(--text-2);">7.0-7.5</span>
-        </div>
-        <div>
-          <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Пара #8</div>
-          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Место под заявленную пару</div>
-        </div>
-        <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Слот под название команды, рейтинг пары и город/комьюнити.</div>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 32px;">
-      <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Skolkovo%20Night%20Clay%20League" target="_blank" class="btn-primary">Занять слот для пары</a>
-      <div style="font-size: 13px; color: var(--text-3); margin-top: 12px;">Сетка рассчитана на 8 пар. Переход к 12 парам предусмотрен отдельным сценарием.</div>
+      <div class="partner-logo">Partner Slot 02</div>
+      <div class="partner-logo">Partner Slot 03</div>
+      <div class="partner-logo">Partner Slot 04</div>
+      <div class="partner-logo">Partner Slot 05</div>
+      <div class="partner-logo">Partner Slot 06</div>
     </div>
   </section>
 
@@ -671,53 +562,43 @@
   <section id="faq" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
     <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 40px;">Частые вопросы</h2>
     <div style="display: flex; flex-direction: column; gap: 12px;">
-      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px;">
+      <details class="faq-item card">
         <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-          Какой уровень нужен для высшего дивизиона?
+          Кто подходит по уровню?
           <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
         </summary>
         <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
-          Текущий запуск рассчитан на пары с суммарным рейтингом 7.0-7.5. Если ваша пара сильнее, можно уже сейчас оставить интерес на премьер-дивизион или professional.
+          Высший дивизион собран под пары рейтинга 7.0-7.5. Если пара сильнее, можно отдельно обсудить лист ожидания под следующий дивизион.
         </div>
       </details>
 
-      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px;">
+      <details class="faq-item card">
+        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          Сколько матчей гарантированно получает пара?
+          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
+        </summary>
+        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          7 матчей регулярки. Если пара заходит в топ-4, дальше добавляется полуфинал и финал либо матч за 3-е место.
+        </div>
+      </details>
+
+      <details class="faq-item card">
         <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
           Можно ли заявиться одному?
           <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
         </summary>
         <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
-          В текущей версии лендинга основной продукт продается как участие пары. Если у вас нет партнера, это можно обсудить отдельно с организатором, но турнирная модель построена вокруг фиксированных составов.
+          Базовый продукт — участие сформированной пары. Если партнера нет, это можно обсудить отдельно, но сетка и продажа сезона заточены под готовые составы.
         </div>
       </details>
 
-      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px;">
+      <details class="faq-item card">
         <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-          Сколько матчей получает пара?
+          Что входит в 79 000 ₽?
           <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
         </summary>
         <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
-          В базовой модели каждая пара получает 7 матчей регулярки. Если пара выходит в топ-4, дальше добавляются полуфинал и финал либо матч за 3-е место.
-        </div>
-      </details>
-
-      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px;">
-        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-          Почему расписание идет по четвергам?
-          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
-        </summary>
-        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
-          Ты задал ориентир по датам 4, 11, 18, 25 июня, а в 2026 году это четверги. Поэтому сезон собран вокруг постоянного четвергового слота после стартовой субботы 30 мая 2026.
-        </div>
-      </details>
-
-      <details class="faq-item" style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px;">
-        <summary style="padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-          Что входит в взнос 79 000 ₽?
-          <span style="color: var(--text-3); font-size: 20px; transition: transform 0.3s;">+</span>
-        </summary>
-        <div style="padding: 0 24px 20px; font-size: 14px; color: var(--text-2); line-height: 1.7;">
-          Клубная организация сезона, корты, мячи, вода, судейство, мерч, открытие, финальный день, награждение, коммуникация, AI-сопровождение и турнирная витрина на сайте.
+          Полный сезон на площадке Школы тенниса Сколково: корты, судья, мячи, вода, мерч, AI-сопровождение, турнирная витрина, финальный день и награждение.
         </div>
       </details>
     </div>
@@ -728,15 +609,15 @@
   <section id="pricing" style="padding: 100px 40px; background: linear-gradient(180deg, #1a1008 0%, var(--bg) 100%);">
     <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
       <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 18px;">Стоимость участия</h2>
-      <p style="font-size: 17px; color: var(--text-2); margin-bottom: 46px;">Высший дивизион, сезон 2026, полный цикл от открытия лиги до финального play-off day.</p>
+      <p style="font-size: 17px; color: var(--text-2); margin-bottom: 46px;">Высший дивизион, 8 пар, сезон 2026, Школа тенниса Сколково.</p>
       <div style="max-width: 520px; margin: 0 auto; background: var(--surface); border: 2px solid var(--clay); border-radius: 24px; padding: 48px 40px; box-shadow: 0 12px 48px rgba(199, 91, 42, 0.15);">
         <span class="badge badge-clay" style="margin-bottom: 20px;">Season 2026</span>
         <div style="font-size: 16px; color: var(--text-2); margin-bottom: 8px;">8 пар • 30 мая - 18 июля 2026</div>
         <div style="font-size: 60px; font-weight: 800; letter-spacing: -2px; margin-bottom: 8px;">79 000 ₽</div>
-        <div style="font-size: 14px; color: var(--text-3); margin-bottom: 34px;">за сезон в текущем позиционировании лендинга</div>
-        <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%8F%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Skolkovo%20Night%20Clay%20League" target="_blank" class="btn-primary" style="width: 100%; font-size: 17px; padding: 18px 36px;">Подать заявку в Telegram</a>
+        <div style="font-size: 14px; color: var(--text-3); margin-bottom: 34px;">за сезон</div>
+        <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Night%20Clay%20League" target="_blank" class="btn-primary" style="width: 100%; font-size: 17px; padding: 18px 36px;">Заявить пару в Telegram</a>
         <div style="margin-top: 16px; font-size: 13px; color: var(--text-3);">
-          <a href="regulations.html" target="_blank" style="color: var(--text-2); text-decoration: underline; text-underline-offset: 3px;">Смотреть обновленный регламент</a>
+          <a href="regulations.html" target="_blank" style="color: var(--text-2); text-decoration: underline; text-underline-offset: 3px;">Смотреть регламент</a>
         </div>
       </div>
     </div>
@@ -746,12 +627,12 @@
     <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
       <div>
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--text-3); margin-bottom: 6px;">SKOLKOVO NIGHT CLAY LEAGUE</div>
-        <div style="font-size: 12px; color: var(--text-3);">Организатор: Долгов AI и партнеры</div>
+        <div style="font-size: 12px; color: var(--text-3);">Площадка-организатор: Школа тенниса Сколково</div>
       </div>
       <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-        <a href="#schedule" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Расписание</a>
+        <a href="#format" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Формат</a>
+        <a href="#players" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Игроки</a>
         <a href="#partners" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Партнеры</a>
-        <a href="#faq" style="font-size: 12px; color: var(--text-2); text-decoration: none;">FAQ</a>
         <a href="regulations.html" target="_blank" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Регламент</a>
         <span style="font-size: 12px; color: var(--text-3);">Summer 2026</span>
       </div>
