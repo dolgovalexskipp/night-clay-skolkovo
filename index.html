@@ -156,6 +156,7 @@
       text-transform: uppercase;
       letter-spacing: 1.4px;
     }
+    .partner-logo img { max-width: 84%; max-height: 54px; object-fit: contain; }
 
     .pair-card {
       padding: 24px;
@@ -482,28 +483,57 @@
   <section id="venue" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
     <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Площадка и продукт</h2>
     <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 700px; margin-bottom: 40px;">
-      Все матчи проходят в Школе тенниса Сколково. Игроки получают не только корты и судейство, но и полный турнирный продукт с мерчем, коммуникацией и сопровождением сезона.
+      Все матчи проходят в Школе тенниса Сколково. По данным площадки, это двухэтажный премиальный клуб на 4 000 м² с открытыми и крытыми кортами, lounge-инфраструктурой и удобным доступом внутри инновационного центра.
     </p>
-    <div class="venue-split" style="display: flex; gap: 24px;">
-      <div class="card" style="flex: 1; padding: 32px;">
-        <div style="font-size: 20px; font-weight: 700; margin-bottom: 18px;">Школа тенниса Сколково</div>
+    <div class="venue-split" style="display: flex; gap: 24px; align-items: stretch;">
+      <div class="card" style="flex: 1.08; padding: 32px;">
+        <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap;">
+          <img src="img/venue/skolkovo-logo-white.png" alt="Школа тенниса Сколково" style="width: 210px; max-width: 100%; height: auto; border-radius: 12px;">
+          <div>
+            <div style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">Школа тенниса Сколково</div>
+            <div style="font-size: 13px; color: var(--text-3); line-height: 1.6;">Официальная площадка лиги 2026</div>
+          </div>
+        </div>
         <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Грунтовые корты и вечернее освещение</span></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Поздний слот под ночную лигу</span></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Раздевалки, инфраструктура, парковка</span></div>
-          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Точка притяжения для сообщества Сколково</span></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">5 открытых кортов с покрытием clay</span></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">4 крытых корта с покрытием Deco Turf Hard</span></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Бесплатная парковка, lounge-зоны, фитнес-бар и SPA</span></div>
+          <div style="display: flex; align-items: center; gap: 10px;"><div class="check-dot"></div><span style="font-size: 14px; color: var(--text-2);">Работают ежедневно с 6:00 до 2:00</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px;">
+          <div class="card" style="padding: 18px; background: rgba(255,255,255,0.02);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 6px;">Адрес</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Москва, ЗАО, ИЦ Сколково, ул. Большой Бульвар, 44</div>
+          </div>
+          <div class="card" style="padding: 18px; background: rgba(255,255,255,0.02);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 6px;">Контакты</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">+7 (495) 260-90-90<br>tennis@schoolskolkovo.ru</div>
+          </div>
         </div>
         <a href="https://skolkovotennis.ru/" target="_blank" style="display: inline-flex; margin-top: 24px; color: var(--clay); text-decoration: none; font-size: 14px; font-weight: 600;">skolkovotennis.ru →</a>
       </div>
-      <div class="card" style="flex: 1; padding: 32px;">
-        <div style="font-size: 20px; font-weight: 700; margin-bottom: 18px;">Что входит в сезон</div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Регулярка и плей-офф</span></div>
-          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Welcome pack и мерч</span></div>
-          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Мячи и вода</span></div>
-          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Судья на матче</span></div>
-          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">AI-ассистент и чат</span></div>
-          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Награждение и подарки</span></div>
+      <div style="flex: 0.92; display: flex; flex-direction: column; gap: 16px;">
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <img src="img/venue/skolkovo-court-1.jpg" alt="Корты Школы тенниса Сколково" style="width: 100%; height: 320px; object-fit: cover;">
+          <div style="padding: 20px 24px;">
+            <div style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Клубная инфраструктура площадки</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">На сайте площадки отдельно заявлены открытые clay-корты, крытые корты, фитнес-зал, SPA-комплекс и зоны отдыха для игроков.</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card" style="padding: 0; overflow: hidden;">
+            <img src="img/venue/skolkovo-court-3.jpg" alt="Лаунж зона Школы тенниса Сколково" style="width: 100%; height: 200px; object-fit: cover;">
+          </div>
+          <div class="card" style="padding: 24px;">
+            <div style="font-size: 20px; font-weight: 700; margin-bottom: 16px;">Что входит в сезон</div>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Регулярка и плей-офф</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Welcome pack и мерч</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Мячи, вода и судейство</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">AI-ассистент и чат</span></div>
+              <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Награждение и подарки</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -514,10 +544,12 @@
   <section id="partners" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
     <h2 class="section-title" style="font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Спонсоры и партнеры</h2>
     <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 760px; margin-bottom: 36px;">
-      Блок уже подготовлен под размещение логотипов и партнерских интеграций. Сейчас в нем стоят слоты, куда можно сразу подгружать бренды, поддерживающие турнир.
+      Первый подтвержденный партнер площадки уже вынесен в сетку. Остальные слоты оставлены под титульного партнера дивизиона, бренд экипировки, wellness-направление и призовой пул финального дня.
     </p>
     <div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 18px;">
-      <div class="partner-logo">Logo Slot 01</div>
+      <div class="partner-logo" style="border-style: solid; border-color: rgba(88, 210, 173, 0.28); background: linear-gradient(180deg, rgba(17, 24, 24, 0.96) 0%, rgba(20, 20, 24, 0.96) 100%);">
+        <img src="img/venue/skolkovo-logo-white.png" alt="Школа тенниса Сколково">
+      </div>
       <div class="partner-logo">Logo Slot 02</div>
       <div class="partner-logo">Logo Slot 03</div>
       <div class="partner-logo">Logo Slot 04</div>
@@ -526,7 +558,7 @@
     </div>
     <div class="card" style="padding: 24px;">
       <div style="font-size: 15px; color: var(--text-2); line-height: 1.7;">
-        Здесь можно разместить титульного партнера дивизиона, клубного партнера, партнера по экипировке, wellness-партнера и спонсоров финального дня.
+        Школа тенниса Сколково добавлена как площадка-организатор. Дальше сюда можно ставить реальные логотипы спонсоров без переделки структуры лендинга.
       </div>
     </div>
   </section>
