@@ -171,7 +171,7 @@
       <nav class="nav-links" style="display: flex; align-items: center; gap: 24px;">
         <a href="#format" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Формат</a>
         <a href="#schedule" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Расписание</a>
-        <a href="#pair" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Пара</a>
+        <a href="#pair" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Участники</a>
         <a href="#venue" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Площадка</a>
         <a href="#partners" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Партнеры</a>
         <a href="#faq" style="color: var(--text-2); text-decoration: none; font-size: 14px;">FAQ</a>
@@ -193,7 +193,7 @@
         </p>
         <div class="hero-btns" style="display: flex; gap: 14px; margin-bottom: 22px;">
           <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Night%20Clay%20League" target="_blank" class="btn-primary">Подать заявку</a>
-          <a href="regulations.html" target="_blank" class="btn-secondary">Открыть регламент</a>
+          <a href="#apply" class="btn-secondary">Как подать заявку</a>
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;">
           <div class="slot-pill">Старт: 23 мая 2026</div>
@@ -369,15 +369,16 @@
   <section id="pair" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
     <div class="players-split" style="display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 24px; align-items: start;">
       <div>
-        <div class="badge badge-mint" style="margin-bottom: 16px;">Первая подтвержденная пара</div>
+        <div class="badge badge-mint" style="margin-bottom: 16px;">Участники лиги</div>
         <h2 class="section-title" style="font-size: 42px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Долгов / Сорокин</h2>
         <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; margin-bottom: 18px;">
-          Сформированная пара высшего дивизиона с суммарным рейтингом 7.2. Александр играет первым номером, Егор закрывает вторую позицию. Оба заходят в сезон одним составом и играют всю регулярку вместе.
+          Сезон собирается из 8 фиксированных пар. Сейчас подтвержден первый состав, дальше сюда будут добавляться остальные участники лиги.
         </p>
         <p style="font-size: 16px; color: var(--text-2); line-height: 1.7; margin-bottom: 26px;">
-          На странице пары можно открыть состав, посмотреть рейтинг, роли на корте и базовый профиль игроков.
+          Карточка показывает состав, рейтинг пары, роли на корте и краткий профиль игроков.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px;">
+          <div class="slot-pill">1 подтвержденная пара</div>
           <div class="slot-pill">Рейтинг пары: 7.2</div>
           <div class="slot-pill">Правша / Правша</div>
           <div class="slot-pill">Высший дивизион</div>
@@ -408,6 +409,83 @@
             <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">Правша, двуручный бекхенд, 2 года в теннисе, второй номер пары.</div>
           </div>
         </a>
+        <div class="card" style="grid-column: 1 / -1; padding: 24px; background: linear-gradient(180deg, rgba(24, 24, 28, 0.96) 0%, rgba(20, 20, 24, 0.98) 100%);">
+          <div style="display: flex; justify-content: space-between; gap: 18px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
+            <div style="font-size: 20px; font-weight: 700;">Еще 6 мест в сезоне</div>
+            <a href="#apply" style="font-size: 14px; color: var(--clay); font-weight: 700; text-decoration: none;">Подать заявку в бота →</a>
+          </div>
+          <div style="font-size: 14px; color: var(--text-2); line-height: 1.7; max-width: 760px;">
+            Заявка идет от готовой пары. Если пары пока нет, бот соберет контакты, уровень и доступность, а дальше можно будет подобрать формат участия.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="apply" class="wrap" style="padding-top: 84px; padding-bottom: 84px;">
+    <div class="format-split" style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 24px; align-items: stretch;">
+      <div>
+        <h2 class="section-title" style="font-size: 42px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px;">Как подать заявку</h2>
+        <p style="font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 560px; margin-bottom: 24px;">
+          Заявка идет через Telegram-бота. Сначала он понимает, у вас уже готовая пара или вы заходите один, потом собирает состав, уровень и доступность без длинной переписки.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Сначала фиксируем, есть ли уже готовая пара</span></div>
+          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Заявка от пары, а не от одного игрока</span></div>
+          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">Проверка уровня, доступности и готовности к сезону</span></div>
+          <div class="check-item"><div class="check-dot"></div><span style="font-size: 14px;">После анкеты - подтверждение и следующий шаг</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 28px; background: linear-gradient(180deg, var(--surface-3) 0%, var(--surface) 100%);">
+        <div class="badge badge-mint" style="margin-bottom: 16px;">Telegram bot flow</div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">1/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Вы заходите с партнером?</div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="slot-pill" style="padding: 9px 12px;">Да, пара готова</span>
+              <span class="slot-pill" style="padding: 9px 12px;">Пока ищу</span>
+            </div>
+          </div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">2/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Ваши имя и фамилия</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Игрок, который начинает заявку.</div>
+          </div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">3/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Имя и фамилия партнера</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Если пары пока нет, бот сохранит заявку как одиночную и передаст организатору.</div>
+          </div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">4/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Какой у вас рейтинг пары?</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Цифра или короткий уровень, чтобы сразу понять дивизион.</div>
+          </div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">5/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Кто играет первым номером?</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Фиксируем роли в паре сразу на входе.</div>
+          </div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">6/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Правша / левша и сильная сторона</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Нужны базовые данные для составления карточки участника.</div>
+          </div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">7/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Сможете играть по вт / чт 20:00-22:00?</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Бот проверяет слот и отмечает, где нужен перенос или ручная проверка.</div>
+          </div>
+          <div class="card" style="padding: 18px 20px; background: rgba(255,255,255,0.03);">
+            <div style="font-size: 12px; color: var(--text-3); margin-bottom: 4px;">8/8</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Подтверждаете участие в сезоне?</div>
+            <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Финальная точка: заявка у организатора, дальше приходит статус и следующий шаг.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -603,7 +681,7 @@
       </div>
       <div style="display: flex; gap: 18px; flex-wrap: wrap;">
         <a href="#format" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Формат</a>
-        <a href="#pair" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Пара</a>
+        <a href="#pair" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Участники</a>
         <a href="#partners" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Партнеры</a>
         <a href="regulations.html" target="_blank" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Регламент</a>
       </div>
