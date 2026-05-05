@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пары сезона — Skolkovo Night Clay League</title>
+  <meta name="description" content="Состав высшего дивизиона Skolkovo Night Clay League 2026. 8 пар, NTRP 7.0–8.0 на пару.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Light.ttf') format('truetype'); font-weight: 300; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Regular.ttf') format('truetype'); font-weight: 400; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Medium.ttf') format('truetype'); font-weight: 500; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-SemiBold.ttf') format('truetype'); font-weight: 600; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Bold.ttf') format('truetype'); font-weight: 700; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-ExtraBold.ttf') format('truetype'); font-weight: 800; }
+
+    :root {
+      --clay: #c75b2a;
+      --clay-light: #e07a4a;
+      --mint: #58d2ad;
+      --bg: #09090d;
+      --surface: #141418;
+      --surface-2: #1a1a1f;
+      --border: #252529;
+      --text-1: #f5f5f4;
+      --text-2: #8a8a90;
+      --text-3: #55555a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lufga', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(199, 91, 42, 0.16), transparent 22%),
+        radial-gradient(circle at left center, rgba(88, 210, 173, 0.06), transparent 22%),
+        var(--bg);
+      color: var(--text-1);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+    .card { background: linear-gradient(180deg, rgba(26, 26, 31, 0.96) 0%, rgba(20, 20, 24, 0.98) 100%); border: 1px solid var(--border); border-radius: 20px; }
+    .badge { display: inline-flex; padding: 7px 15px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .badge-clay { background: rgba(199, 91, 42, 0.14); color: var(--clay); }
+    .badge-mint { background: rgba(88, 210, 173, 0.12); color: var(--mint); }
+    .badge-muted { background: rgba(255,255,255,0.04); color: var(--text-2); }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 34px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--clay) 0%, var(--clay-light) 100%);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 14px 36px rgba(199, 91, 42, 0.24);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .pair-card {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform .2s, border-color .2s;
+    }
+    .pair-card.confirmed { border-color: rgba(199, 91, 42, 0.32); }
+    .pair-card.confirmed:hover { transform: translateY(-2px); }
+    .pair-card.placeholder {
+      border-style: dashed;
+      border-color: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.01);
+    }
+    .pair-card a { color: inherit; text-decoration: none; }
+
+    .pair-num {
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      color: var(--text-3);
+      font-weight: 700;
+    }
+    .pair-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .pair-meta {
+      font-size: 13px;
+      color: var(--text-3);
+    }
+    .pair-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pair-bullet {
+      font-size: 13px;
+      color: var(--text-2);
+      display: flex;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .pair-bullet::before {
+      content: '•';
+      color: var(--clay);
+    }
+
+    @media (max-width: 1024px) {
+      .pairs-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .wrap { padding: 0 20px; }
+      .pairs-grid { grid-template-columns: 1fr !important; }
+      .nav-links { display: none !important; }
+    }
+    @media (max-width: 480px) {
+      .wrap { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(10, 10, 15, 0.86); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);">
+    <div class="wrap" style="padding-top: 18px; padding-bottom: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+      <a href="index.html" style="font-weight: 700; font-size: 14px; letter-spacing: 2.4px; color: var(--text-1); text-decoration: none;">SKOLKOVO NIGHT CLAY LEAGUE</a>
+      <nav class="nav-links" style="display: flex; align-items: center; gap: 22px;">
+        <a href="index.html#division" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Дивизион</a>
+        <a href="index.html#format" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Формат</a>
+        <a href="tournament.html" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Турнирная таблица</a>
+        <a href="index.html#faq" style="color: var(--text-2); text-decoration: none; font-size: 14px;">FAQ</a>
+        <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Night%20Clay%20League" target="_blank" class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Заявить пару</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-top: 64px; padding-bottom: 80px;">
+    <div style="max-width: 760px; margin-bottom: 36px;">
+      <div class="badge badge-clay" style="margin-bottom: 16px;">Состав сезона 2026</div>
+      <h1 style="font-size: 48px; font-weight: 700; letter-spacing: -1.8px; line-height: 1.04; margin-bottom: 14px;">Пары высшего дивизиона</h1>
+      <p style="font-size: 17px; color: var(--text-2); line-height: 1.7;">
+        В сезоне 8 пар. Сумма NTRP каждой пары в диапазоне 7.0–8.0, минимум 3.0 на игрока, не выше 4.5. Состав закрывается до открытия 23 мая. Подтверждённые пары появляются здесь по мере оплаты сезона.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px;">
+      <span class="badge badge-clay">Подтверждено: 1 / 8</span>
+      <span class="badge badge-muted">Свободно: 7 мест</span>
+      <span class="badge badge-mint">NTRP 7.0–8.0 на пару</span>
+    </div>
+
+    <div class="pairs-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+
+      <a href="players.html" class="card pair-card confirmed">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div class="pair-num">Пара 1</div>
+          <span class="badge badge-clay">NTRP 7.5</span>
+        </div>
+        <div>
+          <div class="pair-name">Долгов / Сорокин</div>
+          <div class="pair-meta">Founder VEYRA • CEO Онлайн-школы №1</div>
+        </div>
+        <ul class="pair-bullets">
+          <li class="pair-bullet">4.0–4.5 / 3.0–3.5 по игрокам</li>
+          <li class="pair-bullet">Правша / Правша, оба двуручный бэкхенд</li>
+          <li class="pair-bullet">Подтверждена, заявлена на регулярку и гала-день</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 8px; font-size: 13px; color: var(--clay); font-weight: 700;">Открыть карточку →</div>
+      </a>
+
+      <div class="card pair-card placeholder">
+        <div class="pair-num">Пара 2</div>
+        <div class="pair-name" style="color: var(--text-3);">Свободное место</div>
+        <div class="pair-meta">Откроется по подтверждению заявки</div>
+      </div>
+      <div class="card pair-card placeholder">
+        <div class="pair-num">Пара 3</div>
+        <div class="pair-name" style="color: var(--text-3);">Свободное место</div>
+        <div class="pair-meta">Откроется по подтверждению заявки</div>
+      </div>
+      <div class="card pair-card placeholder">
+        <div class="pair-num">Пара 4</div>
+        <div class="pair-name" style="color: var(--text-3);">Свободное место</div>
+        <div class="pair-meta">Откроется по подтверждению заявки</div>
+      </div>
+      <div class="card pair-card placeholder">
+        <div class="pair-num">Пара 5</div>
+        <div class="pair-name" style="color: var(--text-3);">Свободное место</div>
+        <div class="pair-meta">Откроется по подтверждению заявки</div>
+      </div>
+      <div class="card pair-card placeholder">
+        <div class="pair-num">Пара 6</div>
+        <div class="pair-name" style="color: var(--text-3);">Свободное место</div>
+        <div class="pair-meta">Откроется по подтверждению заявки</div>
+      </div>
+      <div class="card pair-card placeholder">
+        <div class="pair-num">Пара 7</div>
+        <div class="pair-name" style="color: var(--text-3);">Свободное место</div>
+        <div class="pair-meta">Откроется по подтверждению заявки</div>
+      </div>
+      <div class="card pair-card placeholder">
+        <div class="pair-num">Пара 8</div>
+        <div class="pair-name" style="color: var(--text-3);">Свободное место</div>
+        <div class="pair-meta">Откроется по подтверждению заявки</div>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top: 32px; padding: 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div style="max-width: 560px;">
+        <div style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">Хотите занять место в дивизионе?</div>
+        <div style="font-size: 14px; color: var(--text-2); line-height: 1.6;">Заявка идёт от готовой пары или одного игрока с поиском партнёра. Организатор подтверждает уровень по NTRP и место в составе.</div>
+      </div>
+      <a href="https://t.me/dolgovalex?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%A1%D0%B0%D1%88%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%B0%D1%80%D1%83%20%D0%B2%20Night%20Clay%20League" target="_blank" class="btn-primary">Заявить пару</a>
+    </div>
+  </main>
+
+  <footer style="border-top: 1px solid var(--border); padding: 28px 40px; margin-top: 40px;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--text-3); margin-bottom: 6px;">SKOLKOVO NIGHT CLAY LEAGUE</div>
+        <div style="font-size: 12px; color: var(--text-3);">Площадка сезона: Школа тенниса Сколково</div>
+      </div>
+      <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+        <a href="index.html" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Главная</a>
+        <a href="tournament.html" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Турнирная таблица</a>
+        <a href="regulations.html" target="_blank" style="font-size: 12px; color: var(--text-2); text-decoration: none;">Регламент</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
