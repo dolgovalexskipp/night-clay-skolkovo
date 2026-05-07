@@ -69,32 +69,68 @@
     .detail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--clay); flex-shrink: 0; }
     .detail-text { font-size: 14px; color: var(--text-2); line-height: 1.6; }
 
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 14px; background: linear-gradient(135deg, var(--clay) 0%, #e07a4a 100%); color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 12px 30px rgba(199, 91, 42, 0.24); }
+
+    .floating-cta { position: fixed; bottom: 24px; right: 24px; z-index: 100; display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; background: linear-gradient(135deg, var(--clay) 0%, #e07a4a 100%); color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 12px 36px rgba(199, 91, 42, 0.42), 0 2px 8px rgba(0,0,0,0.4); opacity: 0; transform: translateY(20px); transition: opacity .3s, transform .3s; pointer-events: none; }
+    .floating-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .floating-cta::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,0.18); }
+
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border); border-radius: 10px; width: 40px; height: 40px; cursor: pointer; padding: 0; align-items: center; justify-content: center; }
+    .nav-toggle span { display: block; width: 18px; height: 1.5px; background: var(--text-1); position: relative; transition: transform .25s; }
+    .nav-toggle span::before, .nav-toggle span::after { content: ''; position: absolute; left: 0; width: 18px; height: 1.5px; background: var(--text-1); transition: transform .25s, top .25s; }
+    .nav-toggle span::before { top: -6px; }
+    .nav-toggle span::after { top: 6px; }
+    body.menu-open .nav-toggle span { background: transparent; }
+    body.menu-open .nav-toggle span::before { top: 0; transform: rotate(45deg); }
+    body.menu-open .nav-toggle span::after { top: 0; transform: rotate(-45deg); }
+
+    .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: rgba(10, 10, 15, 0.96); backdrop-filter: blur(24px); z-index: 49; flex-direction: column; padding: 32px 24px; gap: 8px; }
+    .mobile-menu a { color: var(--text-1); font-size: 22px; font-weight: 600; padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; }
+    .mobile-menu a.cta { margin-top: 18px; background: linear-gradient(135deg, var(--clay) 0%, #e07a4a 100%); color: #fff; padding: 16px 20px; border-radius: 14px; text-align: center; border-bottom: none; font-size: 16px; }
+    body.menu-open .mobile-menu { display: flex; }
+    body.menu-open { overflow: hidden; }
+
     @media (max-width: 1024px) {
       .player-grid, .hero-split, .stat-grid { grid-template-columns: 1fr !important; display: grid !important; }
     }
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
+      .nav-links { display: none !important; }
+      .nav-toggle { display: inline-flex; }
+      .header-cta { display: none !important; }
     }
     @media (max-width: 480px) {
       .wrap { padding: 0 16px; }
+      .floating-cta { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 13px; }
     }
   </style>
 </head>
 <body>
 
   <header style="position: sticky; top: 0; z-index: 50; background: rgba(10, 10, 15, 0.86); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);">
-    <div class="wrap" style="padding-top: 18px; padding-bottom: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
-      <a href="index.html" style="font-weight: 700; font-size: 14px; letter-spacing: 2.4px; color: var(--text-1); text-decoration: none;">SKOLKOVO NIGHT CLAY LEAGUE</a>
-      <div style="display: flex; gap: 18px; align-items: center;">
+    <div class="wrap" style="padding-top: 16px; padding-bottom: 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+      <a href="index.html" style="font-weight: 700; font-size: 13px; letter-spacing: 2.4px; color: var(--text-1); text-decoration: none;">SKOLKOVO NIGHT CLAY LEAGUE</a>
+      <nav class="nav-links" style="display: flex; gap: 22px; align-items: center;">
+        <a href="index.html" style="font-size: 14px; color: var(--text-2); text-decoration: none;">Главная</a>
         <a href="pairs.html" style="font-size: 14px; color: var(--text-2); text-decoration: none;">Все пары</a>
-        <a href="tournament.html" style="font-size: 14px; color: var(--text-2); text-decoration: none;">Турнирная таблица</a>
-        <a href="index.html" style="font-size: 14px; color: var(--text-2); text-decoration: none;">← Главная</a>
-      </div>
+        <a href="regulations.html" style="font-size: 14px; color: var(--text-2); text-decoration: none;">Регламент</a>
+        <a href="https://t.me/skolkovo_night_clay_bot?start=apply" target="_blank" class="btn-primary header-cta">Подать заявку</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Меню" onclick="document.body.classList.toggle('menu-open')"><span></span></button>
     </div>
   </header>
 
-  <main class="wrap" style="padding-top: 56px; padding-bottom: 80px;">
-    <a href="pairs.html" class="back-link">← Все пары сезона</a>
+  <nav class="mobile-menu">
+    <a href="index.html">Главная</a>
+    <a href="pairs.html">Все пары</a>
+    <a href="regulations.html">Регламент</a>
+    <a href="https://t.me/skolkovo_night_clay_bot?start=apply" target="_blank" class="cta">Подать заявку в Telegram</a>
+  </nav>
+
+  <a href="https://t.me/skolkovo_night_clay_bot?start=apply" target="_blank" class="floating-cta" id="floatingCta">Подать заявку в Telegram</a>
+
+  <main class="wrap" style="padding-top: 48px; padding-bottom: 80px;">
+    <a href="index.html" class="back-link">← На главную</a>
 
     <section class="card" style="padding: 36px; margin-bottom: 20px;">
       <div class="hero-split" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: start;">
@@ -184,6 +220,19 @@
       </article>
     </section>
   </main>
+
+  <script>
+    (function () {
+      var floating = document.getElementById('floatingCta');
+      if (!floating) return;
+      function update() {
+        if (window.scrollY > 240) floating.classList.add('visible');
+        else floating.classList.remove('visible');
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
 
 </body>
 </html>
