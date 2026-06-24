@@ -301,11 +301,20 @@
         return '<span style="color:var(--text-3);font-size:12px;">предв. ' + e.played + '/' + SG + '</span>';
       }
 
+      function levelBadge(name) {
+        var lvl = PLAYERS[name] && PLAYERS[name].level;
+        if (!lvl) return '<span style="color:var(--text-3);font-size:12px;">—</span>';
+        var c = { Bronze: '#b88649', Silver: '#c4c4cc', Gold: '#c75b2a' }[lvl] || 'var(--text-2)';
+        var bg = { Bronze: 'rgba(184,134,73,0.14)', Silver: 'rgba(180,180,188,0.14)', Gold: 'rgba(199,91,42,0.14)' }[lvl] || 'rgba(255,255,255,0.04)';
+        return '<span style="display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;color:' + c + ';background:' + bg + ';">' + lvl + '</span>';
+      }
+
       function renderTable(el, rows, opts) {
         opts = opts || {};
         if (!rows.length) { el.outerHTML = '<div style="padding:18px;color:var(--text-3);font-size:14px;">Пока нет сыгранных матчей.</div>'; return; }
         var sCol = opts.strength;
         var head = '<thead><tr><th style="text-align:center;">#</th><th>Игрок</th>' +
+          '<th style="text-align:left;">Разряд</th>' +
           '<th>Очки</th>' + (sCol ? '<th>Сила</th>' : '') +
           '<th class="hide-sm">Матчи</th><th class="hide-sm">Победы</th><th class="hide-sm">Сеты</th><th class="hide-sm">Геймы</th></tr></thead>';
         var body = rows.map(function (r, i) {
@@ -313,6 +322,7 @@
           return '<tr class="' + (i === 0 ? 'top' : '') + '">' +
             '<td style="text-align:center;"><span class="rankpos">' + (i + 1) + '</span></td>' +
             '<td class="player">' + esc(r.name) + q + '</td>' +
+            '<td style="text-align:left;">' + levelBadge(r.name) + '</td>' +
             '<td class="pts">' + r.pts + '</td>' +
             (sCol ? '<td>' + strengthCell(r.name) + '</td>' : '') +
             '<td class="hide-sm">' + r.played + '</td>' +
