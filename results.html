@@ -133,6 +133,22 @@
         </div>
       </div>
     </div>
+
+    <div class="card" style="padding: 26px 28px; margin-top: 14px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px;">Рейтинг силы <span style="color: var(--mint);">(Elo)</span></div>
+      <div class="grid-2" style="gap: 22px; align-items: start;">
+        <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          Отдельно от очков сезона считается <b style="color: var(--text-1);">рейтинг силы</b> — как в шахматах или ATP.
+          Старт зависит от уровня (Bronze 1400 · Silver 1500 · Gold 1600), и после <b style="color: var(--text-1);">каждого</b> матча
+          число меняется: победа поднимает, поражение опускает. Победа над более сильным даёт больше, чем над равным.
+        </div>
+        <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
+          Рейтинг становится <b style="color: var(--text-1);">официальным с <span id="sg">7</span>-го матча</b> — до этого он
+          «предварительный» (помечен «X/<span id="sg2">7</span>»). Так в таблицу силы попадают только те, кто реально
+          играет сезон. Очки 3/2/1/0 при этом идут с первой игры — это две независимые метрики.
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- overall standings -->
@@ -176,10 +192,44 @@
       var L = window.LEAGUE || { matches: [] };
       var FMT = { singles: "Одиночка", doubles: "Пара", mixed: "Микст" };
       var QG = L.qualifyGames || 5;
+      var SG = L.strengthGames || 7;
+      var PLAYERS = L.players || {};
+      var SEED = { Bronze: 1400, Silver: 1500, Gold: 1600 };
 
       document.getElementById('seasonName').textContent = L.season || '';
       document.getElementById('updated').textContent = fmtDate(L.updated);
       document.getElementById('qg').textContent = QG;
+      document.getElementById('sg').textContent = SG;
+      document.getElementById('sg2').textContent = SG;
+
+      // strength rating (Elo), computed chronologically over all matches
+      var ELO = computeElo(L.matches);
+
+      function computeElo(matches) {
+        var rating = {}, played = {};
+        function seed(name) {
+          var lvl = PLAYERS[name] && PLAYERS[name].level;
+          return SEED[lvl] || 1500;
+        }
+        function R(name) {
+          if (rating[name] == null) { rating[name] = seed(name); played[name] = 0; }
+          return rating[name];
+        }
+        function avg(arr) { return arr.reduce(function (s, n) { return s + R(n); }, 0) / arr.length; }
+        var ms = matches.slice().sort(function (a, b) { return (a.date || '').localeCompare(b.date || ''); });
+        ms.forEach(function (m) {
+          var an = analyse(m);
+          if (!an.winner) return;
+          var ra = avg(m.a), rb = avg(m.b);
+          var Ea = 1 / (1 + Math.pow(10, (rb - ra) / 400)), Eb = 1 - Ea;
+          var Sa = an.winner === 'a' ? 1 : 0, Sb = 1 - Sa;
+          m.a.forEach(function (n) { var k = played[n] < SG ? 40 : 24; rating[n] = R(n) + k * (Sa - Ea); played[n]++; });
+          m.b.forEach(function (n) { var k = played[n] < SG ? 40 : 24; rating[n] = R(n) + k * (Sb - Eb); played[n]++; });
+        });
+        var out = {};
+        Object.keys(rating).forEach(function (n) { out[n] = { rating: Math.round(rating[n]), played: played[n] }; });
+        return out;
+      }
 
       // --- analyse one match into per-player deltas ---
       function analyse(m) {
@@ -244,16 +294,27 @@
         return rows;
       }
 
-      function renderTable(el, rows, showQ) {
+      function strengthCell(name) {
+        var e = ELO[name];
+        if (!e) return '<span style="color:var(--text-3);">—</span>';
+        if (e.played >= SG) return '<span style="color:var(--mint);font-weight:800;">' + e.rating + '</span>';
+        return '<span style="color:var(--text-3);font-size:12px;">предв. ' + e.played + '/' + SG + '</span>';
+      }
+
+      function renderTable(el, rows, opts) {
+        opts = opts || {};
         if (!rows.length) { el.outerHTML = '<div style="padding:18px;color:var(--text-3);font-size:14px;">Пока нет сыгранных матчей.</div>'; return; }
+        var sCol = opts.strength;
         var head = '<thead><tr><th style="text-align:center;">#</th><th>Игрок</th>' +
-          '<th>Очки</th><th class="hide-sm">Матчи</th><th class="hide-sm">Победы</th><th class="hide-sm">Сеты</th><th class="hide-sm">Геймы</th></tr></thead>';
+          '<th>Очки</th>' + (sCol ? '<th>Сила</th>' : '') +
+          '<th class="hide-sm">Матчи</th><th class="hide-sm">Победы</th><th class="hide-sm">Сеты</th><th class="hide-sm">Геймы</th></tr></thead>';
         var body = rows.map(function (r, i) {
-          var q = showQ ? '<div class="qbar">' + (r.played >= QG ? 'квалификация ✓' : (QG - r.played) + ' до квалификации') + '</div>' : '';
+          var q = opts.showQ ? '<div class="qbar">' + (r.played >= QG ? 'квалификация ✓' : (QG - r.played) + ' до квалификации') + '</div>' : '';
           return '<tr class="' + (i === 0 ? 'top' : '') + '">' +
             '<td style="text-align:center;"><span class="rankpos">' + (i + 1) + '</span></td>' +
             '<td class="player">' + esc(r.name) + q + '</td>' +
             '<td class="pts">' + r.pts + '</td>' +
+            (sCol ? '<td>' + strengthCell(r.name) + '</td>' : '') +
             '<td class="hide-sm">' + r.played + '</td>' +
             '<td class="hide-sm">' + r.wins + '</td>' +
             '<td class="hide-sm">' + r.sf + ':' + r.sa + '</td>' +
@@ -264,7 +325,7 @@
       }
 
       // overall
-      renderTable(document.getElementById('overall'), standings(L.matches), true);
+      renderTable(document.getElementById('overall'), standings(L.matches), { showQ: true, strength: true });
 
       // per-format
       var fwrap = document.getElementById('formats');
@@ -278,7 +339,7 @@
         block.innerHTML = '<div class="badge badge-muted" style="margin-bottom:12px;">' + FMT[f] + '</div>' +
           '<div class="card" style="padding:10px 14px;"><div class="tbl-wrap"><table class="rank"></table></div></div>';
         fwrap.appendChild(block);
-        renderTable(block.querySelector('table'), standings(ms), false);
+        renderTable(block.querySelector('table'), standings(ms), {});
       });
       if (!any) document.getElementById('formatsWrap').style.display = 'none';
 
