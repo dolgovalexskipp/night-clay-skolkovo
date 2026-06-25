@@ -6,13 +6,23 @@
   <title>Результаты и рейтинг — Летняя грунтовая лига Сколково</title>
   <meta name="description" content="Результаты матчей и таблица рейтинга летней грунтовой лиги Школы тенниса Сколково. Сезон 23 июня – 19 сентября 2026.">
   <link rel="canonical" href="https://sktennis.ru/results.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta name="theme-color" content="#09090d">
+  <link rel="preload" href="fonts/Lufga-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Lufga-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Результаты и рейтинг — Skolkovo Night Clay League">
+  <meta property="og:description" content="Таблица рейтинга и лог матчей летней грунтовой лиги Сколково. Сезон 23 июня – 19 сентября 2026.">
+  <meta property="og:image" content="https://sktennis.ru/img/og-summer-2026.jpg">
+  <meta property="og:url" content="https://sktennis.ru/results.html">
   <style>
-    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Light.ttf') format('truetype'); font-weight: 300; }
-    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Regular.ttf') format('truetype'); font-weight: 400; }
-    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Medium.ttf') format('truetype'); font-weight: 500; }
-    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-SemiBold.ttf') format('truetype'); font-weight: 600; }
-    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Bold.ttf') format('truetype'); font-weight: 700; }
-    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-ExtraBold.ttf') format('truetype'); font-weight: 800; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Light.woff2') format('woff2'), url('fonts/Lufga-Light.ttf') format('truetype'); font-weight: 300; font-display: swap; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Regular.woff2') format('woff2'), url('fonts/Lufga-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Medium.woff2') format('woff2'), url('fonts/Lufga-Medium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-SemiBold.woff2') format('woff2'), url('fonts/Lufga-SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-Bold.woff2') format('woff2'), url('fonts/Lufga-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Lufga'; src: url('fonts/Lufga-ExtraBold.woff2') format('woff2'), url('fonts/Lufga-ExtraBold.ttf') format('truetype'); font-weight: 800; font-display: swap; }
 
     :root {
       --clay: #c75b2a; --clay-light: #e07a4a; --mint: #58d2ad;
@@ -69,11 +79,31 @@
     .wintag { font-size: 10px; font-weight: 700; color: var(--mint); border: 1px solid rgba(88,210,173,0.3); border-radius: 6px; padding: 2px 6px; margin-left: 8px; }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* Mobile menu */
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border); border-radius: 10px; width: 40px; height: 40px; cursor: pointer; padding: 0; align-items: center; justify-content: center; }
+    .nav-toggle span { display: block; width: 18px; height: 1.5px; background: var(--text-1); position: relative; transition: transform .25s, opacity .25s; }
+    .nav-toggle span::before, .nav-toggle span::after { content: ''; position: absolute; left: 0; width: 18px; height: 1.5px; background: var(--text-1); transition: transform .25s, top .25s; }
+    .nav-toggle span::before { top: -6px; }
+    .nav-toggle span::after { top: 6px; }
+    body.menu-open .nav-toggle span { background: transparent; }
+    body.menu-open .nav-toggle span::before { top: 0; transform: rotate(45deg); }
+    body.menu-open .nav-toggle span::after { top: 0; transform: rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: rgba(10, 10, 15, 0.96); backdrop-filter: blur(24px); z-index: 49; flex-direction: column; padding: 32px 24px; gap: 8px; }
+    .mobile-menu a { color: var(--text-1); font-size: 22px; font-weight: 600; padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; }
+    .mobile-menu a.cta { margin-top: 18px; background: linear-gradient(135deg, var(--clay) 0%, var(--clay-light) 100%); color: #fff; padding: 16px 20px; border-radius: 14px; text-align: center; border-bottom: none; font-size: 16px; }
+    body.menu-open .mobile-menu { display: flex; }
+    body.menu-open { overflow: hidden; }
+
     @media (max-width: 768px) {
       .wrap { padding-left: 18px; padding-right: 18px; }
       .section-title { font-size: 28px !important; }
+      h1.section-title { font-size: 34px !important; }
       .grid-2 { grid-template-columns: 1fr !important; }
       table.rank th.hide-sm, table.rank td.hide-sm { display: none; }
+      table.rank th, table.rank td { padding: 11px 8px; font-size: 13px; }
+      .nav-links { display: none !important; }
+      .nav-toggle { display: inline-flex; }
     }
   </style>
 </head>
@@ -82,15 +112,24 @@
   <header style="position: sticky; top: 0; z-index: 50; background: rgba(10, 10, 15, 0.86); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);">
     <div class="wrap" style="padding-top: 16px; padding-bottom: 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
       <a href="index.html" style="font-weight: 700; font-size: 13px; letter-spacing: 2.4px; color: var(--text-1); text-decoration: none;">SKOLKOVO NIGHT CLAY LEAGUE</a>
-      <nav style="display: flex; align-items: center; gap: 22px;">
+      <nav class="nav-links" style="display: flex; align-items: center; gap: 22px;">
         <a href="index.html#format" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Формат</a>
         <a href="index.html#schedule" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Расписание</a>
         <a href="results.html" style="color: var(--text-1); text-decoration: none; font-size: 14px; font-weight: 600;">Результаты</a>
         <a href="index.html#pricing" style="color: var(--text-2); text-decoration: none; font-size: 14px;">Подписка</a>
-        <a href="https://t.me/skolkovo_night_clay_bot?start=apply" target="_blank" class="btn-primary" style="padding: 10px 20px; font-size: 14px;">Подать заявку</a>
+        <a href="https://t.me/skolkovo_night_clay_bot?start=apply" target="_blank" class="btn-primary header-cta" style="padding: 10px 20px; font-size: 14px;">Подать заявку</a>
       </nav>
+      <button class="nav-toggle" aria-label="Меню" onclick="document.body.classList.toggle('menu-open')"><span></span></button>
     </div>
   </header>
+
+  <nav class="mobile-menu">
+    <a href="index.html#format" onclick="document.body.classList.remove('menu-open')">Формат</a>
+    <a href="index.html#schedule" onclick="document.body.classList.remove('menu-open')">Расписание</a>
+    <a href="results.html" onclick="document.body.classList.remove('menu-open')">Результаты и рейтинг</a>
+    <a href="index.html#pricing" onclick="document.body.classList.remove('menu-open')">Подписка</a>
+    <a href="https://t.me/skolkovo_night_clay_bot?start=apply" target="_blank" class="cta">Подать заявку в Telegram</a>
+  </nav>
 
   <section class="wrap" style="padding-top: 56px; padding-bottom: 28px;">
     <div class="badge badge-clay" style="margin-bottom: 14px;">Сезон <span id="seasonName">Лето 2026</span></div>
