@@ -25,12 +25,12 @@ window.LEAGUE = {
   "qualifyGames": 5,
   "strengthGames": 7,
   "players": {
-    "Андрей Благоразумов": { "level": "Silver" },
-    "Андрей Богатенков": { "level": "Silver" },
-    "Мария Ильина": { "level": "Silver" },
-    "Мария Кирсанова": { "level": "Silver" },
-    "Юлия Бонбина": { "level": "Silver" },
-    "Лина Конопасевич": { "level": "Silver" }
+    "Андрей Благоразумов": { "level": "Silver", "tg": "Andreyblagorazumov" },
+    "Андрей Богатенков": { "level": "Silver", "tg": "Andrenalli" },
+    "Мария Ильина": { "level": "Silver", "tg": "mariamaria131313" },
+    "Мария Кирсанова": { "level": "Silver", "tg": "maria05031" },
+    "Юлия Бонбина": { "level": "Silver", "tg": "julie_bonbina" },
+    "Лина Конопасевич": { "level": "Silver", "tg": "LinaKnp" }
   },
   "matches": [
     {
