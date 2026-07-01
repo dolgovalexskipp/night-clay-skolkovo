@@ -45,6 +45,10 @@
     .badge-clay { background: rgba(199, 91, 42, 0.14); color: var(--clay); }
     .badge-mint { background: rgba(88, 210, 173, 0.12); color: var(--mint); }
     .badge-muted { background: rgba(255,255,255,0.04); color: var(--text-2); }
+    .seg { display: inline-flex; gap: 6px; margin: 0 0 12px 10px; flex-wrap: wrap; vertical-align: middle; }
+    .seg button { font-family: inherit; cursor: pointer; padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--text-2); transition: color .15s, background .15s, border-color .15s; }
+    .seg button:hover { color: var(--text-1); }
+    .seg button.active { background: rgba(199,91,42,0.14); color: var(--clay); border-color: rgba(199,91,42,0.4); }
     .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border-radius: 14px; background: linear-gradient(135deg, var(--clay) 0%, var(--clay-light) 100%); color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 14px 36px rgba(199, 91, 42, 0.24); transition: transform .25s; }
     .btn-primary:hover { transform: translateY(-1px); }
     .btn-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 13px 22px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); color: var(--text-2); text-decoration: none; font-weight: 500; font-size: 14px; transition: border-color .25s, color .25s; }
@@ -379,12 +383,46 @@
       // per-format
       var fwrap = document.getElementById('formats');
       var any = false;
+      function singlesGender(m) {
+        var t = String(m.title || '');
+        if (/жен/i.test(t)) return 'w';
+        if (/муж/i.test(t)) return 'm';
+        return '';
+      }
       ['singles', 'doubles', 'mixed'].forEach(function (f) {
         var ms = L.matches.filter(function (m) { return m.format === f; });
         if (!ms.length) return;
         any = true;
         var block = document.createElement('div');
         block.style.marginBottom = '20px';
+
+        if (f === 'singles') {
+          block.innerHTML = '<div style="margin-bottom:12px;">' +
+            '<span class="badge badge-muted">' + FMT[f] + '</span>' +
+            '<span class="seg" id="segSingles">' +
+              '<button data-g="" class="active">Общий</button>' +
+              '<button data-g="m">Мужская</button>' +
+              '<button data-g="w">Женская</button>' +
+            '</span></div>' +
+            '<div class="card" style="padding:10px 14px;"><div class="tbl-wrap" id="singlesTblWrap"><table class="rank"></table></div></div>';
+          fwrap.appendChild(block);
+          var wrapEl = block.querySelector('#singlesTblWrap');
+          var drawSingles = function (g) {
+            var subset = ms.filter(function (m) { return !g || singlesGender(m) === g; });
+            wrapEl.innerHTML = '<table class="rank"></table>';
+            renderTable(wrapEl.querySelector('table'), standings(subset), {});
+          };
+          drawSingles('');
+          block.querySelectorAll('#segSingles button').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              block.querySelectorAll('#segSingles button').forEach(function (b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+              drawSingles(btn.getAttribute('data-g'));
+            });
+          });
+          return;
+        }
+
         block.innerHTML = '<div class="badge badge-muted" style="margin-bottom:12px;">' + FMT[f] + '</div>' +
           '<div class="card" style="padding:10px 14px;"><div class="tbl-wrap"><table class="rank"></table></div></div>';
         fwrap.appendChild(block);
