@@ -45,7 +45,7 @@
     .badge-clay { background: rgba(199, 91, 42, 0.14); color: var(--clay); }
     .badge-mint { background: rgba(88, 210, 173, 0.12); color: var(--mint); }
     .badge-muted { background: rgba(255,255,255,0.04); color: var(--text-2); }
-    .seg { display: inline-flex; gap: 6px; margin: 0 0 12px 10px; flex-wrap: wrap; vertical-align: middle; }
+    .seg { display: inline-flex; gap: 6px; flex-wrap: wrap; }
     .seg button { font-family: inherit; cursor: pointer; padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--text-2); transition: color .15s, background .15s, border-color .15s; }
     .seg button:hover { color: var(--text-1); }
     .seg button.active { background: rgba(199,91,42,0.14); color: var(--clay); border-color: rgba(199,91,42,0.4); }
@@ -397,7 +397,7 @@
         block.style.marginBottom = '20px';
 
         if (f === 'singles') {
-          block.innerHTML = '<div style="margin-bottom:12px;">' +
+          block.innerHTML = '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">' +
             '<span class="badge badge-muted">' + FMT[f] + '</span>' +
             '<span class="seg" id="segSingles">' +
               '<button data-g="" class="active">Общий</button>' +
