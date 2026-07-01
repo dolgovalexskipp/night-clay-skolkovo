@@ -21,7 +21,7 @@
 */
 window.LEAGUE = {
   "season": "Лето 2026",
-  "updated": "2026-06-24",
+  "updated": "2026-06-30",
   "qualifyGames": 5,
   "strengthGames": 7,
   "players": {
@@ -30,9 +30,27 @@ window.LEAGUE = {
     "Мария Ильина": { "level": "Silver", "tg": "mariamaria131313" },
     "Мария Кирсанова": { "level": "Silver", "tg": "maria05031" },
     "Юлия Бонбина": { "level": "Silver", "tg": "julie_bonbina" },
-    "Лина Конопасевич": { "level": "Silver", "tg": "LinaKnp" }
+    "Лина Конопасевич": { "level": "Silver", "tg": "LinaKnp" },
+    "Сергей Артемьев": { "level": "Silver" },
+    "Надин Богатенкова": { "level": "Silver" }
   },
   "matches": [
+    {
+      "date": "2026-06-30",
+      "format": "singles",
+      "title": "Мужская одиночка",
+      "a": ["Сергей Артемьев"],
+      "b": ["Андрей Богатенков"],
+      "sets": [[6, 0], [6, 4]]
+    },
+    {
+      "date": "2026-06-30",
+      "format": "singles",
+      "title": "Женская одиночка",
+      "a": ["Мария Ильина"],
+      "b": ["Надин Богатенкова"],
+      "sets": [[6, 2], [6, 0]]
+    },
     {
       "date": "2026-06-23",
       "format": "singles",
