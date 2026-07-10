@@ -309,6 +309,7 @@
         }
         matches.forEach(function (m) {
           var r = analyse(m);
+          if (!r.winner) return; // матч прерван / не доигран — не идёт в очки
           var winSide = r.winner === "a" ? m.a : m.b;
           var loseSide = r.winner === "a" ? m.b : m.a;
           var winSets = r.winner === "a" ? r.setsA : r.setsB;
@@ -444,12 +445,15 @@
             '<div class="names">' + esc((side || []).join(' / ')) + (isWin ? '<span class="wintag">победа</span>' : '') + '</div>' +
           '</div>';
         }
+        var scoreLabel = r.winner ? (r.scoreStr + ' по сетам') : 'не доигран';
+        var noteHtml = m.note ? '<div style="font-size:12px;color:var(--text-3);padding-top:6px;">' + esc(m.note) + '</div>' : '';
         return '<div class="match">' +
           '<div class="top"><span class="fmt">' + esc(m.title || FMT[m.format] || '') + '</span>' +
-          '<span class="date">' + fmtDate(m.date) + ' · ' + r.scoreStr + ' по сетам</span></div>' +
+          '<span class="date">' + fmtDate(m.date) + ' · ' + scoreLabel + '</span></div>' +
           sideHtml(m.a, 'a') +
           '<div style="font-variant-numeric:tabular-nums; font-size:14px; color:var(--text-3); letter-spacing:2px; padding:4px 0;">' + setsStr + '</div>' +
           sideHtml(m.b, 'b') +
+          noteHtml +
         '</div>';
       }).join('');
 
