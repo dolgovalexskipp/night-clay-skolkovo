@@ -36,8 +36,8 @@ window.LEAGUE = {
     "Лина Конопасевич": { "level": "Silver", "tg": "LinaKnp" },
     "Сергей Артемьев": { "level": "Silver", "tg": "sergio_asv" },
     "Надин Богатенкова": { "level": "Silver", "tg": "Nadine_Bogatenkova" },
-    "Мария Чаклина": { "level": "Silver" },
-    "Елена Ларионова": { "level": "Silver" }
+    "Мария Чаклина": { "level": "Silver", "tg": "mariachaklina" },
+    "Елена Ларионова": { "level": "Silver", "tg": "tronelena" }
   },
   "matches": [
     {
