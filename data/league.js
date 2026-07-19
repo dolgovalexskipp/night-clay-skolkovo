@@ -24,7 +24,7 @@
 */
 window.LEAGUE = {
   "season": "Лето 2026",
-  "updated": "2026-07-10",
+  "updated": "2026-07-19",
   "qualifyGames": 5,
   "strengthGames": 7,
   "players": {
@@ -37,9 +37,19 @@ window.LEAGUE = {
     "Сергей Артемьев": { "level": "Silver", "tg": "sergio_asv" },
     "Надин Богатенкова": { "level": "Silver", "tg": "Nadine_Bogatenkova" },
     "Мария Чаклина": { "level": "Silver", "tg": "mariachaklina" },
-    "Елена Ларионова": { "level": "Silver", "tg": "tronelena" }
+    "Елена Ларионова": { "level": "Silver", "tg": "tronelena" },
+    "Александр Долгов": { "level": "Silver", "tg": "dolgovalex" }
   },
   "matches": [
+    {
+      "date": "2026-07-19",
+      "format": "singles",
+      "title": "Мужская одиночка",
+      "a": ["Андрей Богатенков"],
+      "b": ["Александр Долгов"],
+      "sets": [[4, 6], [6, 2]],
+      "mtb": [10, 7]
+    },
     {
       "date": "2026-07-07",
       "format": "doubles",
