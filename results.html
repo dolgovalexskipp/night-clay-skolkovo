@@ -183,7 +183,9 @@
         <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
           Отдельно от очков сезона считается <b style="color: var(--text-1);">рейтинг силы</b> — как в шахматах или ATP.
           Старт зависит от уровня (Bronze 1400 · Silver 1500 · Gold 1600), и после <b style="color: var(--text-1);">каждого</b> матча
-          число меняется: победа поднимает, поражение опускает. Победа над более сильным даёт больше, чем над равным.
+          число меняется: победа поднимает, поражение опускает. Победа над более сильным даёт больше, чем над равным,
+          а <b style="color: var(--text-1);">крупный счёт по геймам усиливает сдвиг</b> — «сухая» победа 6:0 6:0 двигает рейтинг
+          вдвое сильнее, чем победа на матч-тай-брейке при равных геймах.
         </div>
         <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
           Рейтинг становится <b style="color: var(--text-1);">официальным с <span id="sg">7</span>-го матча</b> — до этого он
@@ -266,8 +268,12 @@
           var ra = avg(m.a), rb = avg(m.b);
           var Ea = 1 / (1 + Math.pow(10, (rb - ra) / 400)), Eb = 1 - Ea;
           var Sa = an.winner === 'a' ? 1 : 0, Sb = 1 - Sa;
-          m.a.forEach(function (n) { var k = played[n] < SG ? 40 : 24; rating[n] = R(n) + k * (Sa - Ea); played[n]++; });
-          m.b.forEach(function (n) { var k = played[n] < SG ? 40 : 24; rating[n] = R(n) + k * (Sb - Eb); played[n]++; });
+          // margin-of-victory: разница геймов победителя усиливает сдвиг (до ×2 за «сухарь» 6:0 6:0)
+          var wG = an.winner === 'a' ? an.gamesA : an.gamesB;
+          var lG = an.winner === 'a' ? an.gamesB : an.gamesA;
+          var mov = Math.min(2, 1 + Math.max(0, wG - lG) / 12);
+          m.a.forEach(function (n) { var k = played[n] < SG ? 40 : 24; rating[n] = R(n) + k * mov * (Sa - Ea); played[n]++; });
+          m.b.forEach(function (n) { var k = played[n] < SG ? 40 : 24; rating[n] = R(n) + k * mov * (Sb - Eb); played[n]++; });
         });
         var out = {};
         Object.keys(rating).forEach(function (n) { out[n] = { rating: Math.round(rating[n]), played: played[n] }; });
