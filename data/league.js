@@ -26,7 +26,7 @@ window.LEAGUE = {
   "season": "Лето 2026",
   "updated": "2026-07-22",
   "qualifyGames": 5,
-  "strengthGames": 7,
+  "strengthGames": 5,
   "players": {
     "Андрей Благоразумов": { "level": "Silver", "tg": "Andreyblagorazumov" },
     "Андрей Богатенков": { "level": "Silver", "tg": "Andrenalli" },
