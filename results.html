@@ -182,7 +182,7 @@
       <div class="grid-2" style="gap: 22px; align-items: start;">
         <div style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
           Отдельно от очков сезона считается <b style="color: var(--text-1);">рейтинг силы</b> — как в шахматах или ATP.
-          Старт зависит от уровня (Bronze 1400 · Silver 1500 · Gold 1600), и после <b style="color: var(--text-1);">каждого</b> матча
+          Все стартуют с одинаковых <b style="color: var(--text-1);">1500</b> — дальше рейтинг калибруется только игрой. После <b style="color: var(--text-1);">каждого</b> матча
           число меняется: победа поднимает, поражение опускает. Победа над более сильным даёт больше, чем над равным,
           а <b style="color: var(--text-1);">крупный счёт по геймам усиливает сдвиг</b> — «сухая» победа 6:0 6:0 двигает рейтинг
           вдвое сильнее, чем победа на матч-тай-брейке при равных геймах.
@@ -239,7 +239,8 @@
       var QG = L.qualifyGames || 5;
       var SG = L.strengthGames || 7;
       var PLAYERS = L.players || {};
-      var SEED = { Bronze: 1400, Silver: 1500, Gold: 1600 };
+      // Единый старт для всех (22.07.2026): уровень — только разряд-лейбл, Elo стартует с 1500 и калибруется игрой.
+      var SEED = { Bronze: 1500, Silver: 1500, Gold: 1500 };
 
       document.getElementById('seasonName').textContent = L.season || '';
       document.getElementById('updated').textContent = fmtDate(L.updated);
