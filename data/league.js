@@ -24,7 +24,7 @@
 */
 window.LEAGUE = {
   "season": "Лето 2026",
-  "updated": "2026-07-19",
+  "updated": "2026-07-22",
   "qualifyGames": 5,
   "strengthGames": 7,
   "players": {
@@ -38,9 +38,50 @@ window.LEAGUE = {
     "Надин Богатенкова": { "level": "Silver", "tg": "Nadine_Bogatenkova" },
     "Мария Чаклина": { "level": "Silver", "tg": "mariachaklina" },
     "Елена Ларионова": { "level": "Silver", "tg": "tronelena" },
-    "Александр Долгов": { "level": "Silver", "tg": "dolgovalex" }
+    "Александр Долгов": { "level": "Silver", "tg": "dolgovalex" },
+    "Анна Алекс": { "level": "Silver", "tg": "Annaalexandrovnaaa" },
+    "Сергей Сеглюк": { "level": "Bronze", "tg": "Sergei_Stefano" },
+    "Станислав Должиков": { "level": "Silver", "tg": "tagsandtalks" },
+    "Илья Невмержицкий": { "level": "Gold", "tg": "a_chuchuk" },
+    "Егор Сорокин": { "level": "Silver", "tg": "georgesorkin" }
   },
   "matches": [
+    {
+      "date": "2026-07-21",
+      "format": "singles",
+      "title": "Женская одиночка",
+      "a": ["Мария Ильина"],
+      "b": ["Лина Конопасевич"],
+      "sets": [[2, 6], [6, 0]],
+      "mtb": [10, 7]
+    },
+    {
+      "date": "2026-07-21",
+      "format": "singles",
+      "title": "Женская одиночка",
+      "a": ["Мария Чаклина"],
+      "b": ["Анна Алекс"],
+      "sets": [[6, 0], [6, 0]]
+    },
+    {
+      "date": "2026-07-21",
+      "format": "doubles",
+      "title": "Мужская пара",
+      "a": ["Сергей Артемьев", "Андрей Богатенков"],
+      "b": ["Андрей Благоразумов", "Станислав Должиков"],
+      "sets": [[4, 6], [6, 4]],
+      "mtb": [10, 5]
+    },
+    {
+      "date": "2026-07-21",
+      "format": "doubles",
+      "title": "Мужская пара",
+      "a": ["Александр Долгов", "Сергей Сеглюк"],
+      "b": ["Илья Невмержицкий", "Егор Сорокин"],
+      "sets": [[6, 7], [6, 4]],
+      "mtb": [10, 7],
+      "note": "Первый сет на тай-брейке 5:7; матч на харде"
+    },
     {
       "date": "2026-07-19",
       "format": "singles",
