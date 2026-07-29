@@ -390,7 +390,6 @@
         if (!rows.length) { el.outerHTML = '<div style="padding:18px;color:var(--text-3);font-size:14px;">Пока нет сыгранных матчей.</div>'; return; }
         var sCol = opts.strength;
         var head = '<thead><tr><th style="text-align:center;">#</th><th>Игрок</th>' +
-          '<th style="text-align:left;">Разряд</th>' +
           '<th>Очки</th>' + (sCol ? '<th>Сила</th>' : '') +
           '<th class="hide-sm">Матчи</th><th class="hide-sm">Победы</th><th class="hide-sm">Сеты</th><th class="hide-sm">Геймы</th></tr></thead>';
         var body = rows.map(function (r, i) {
@@ -398,7 +397,6 @@
           return '<tr class="' + (i === 0 ? 'top' : '') + '">' +
             '<td style="text-align:center;"><span class="rankpos">' + (i + 1) + '</span></td>' +
             '<td class="player">' + esc(r.name) + q + '</td>' +
-            '<td style="text-align:left;">' + levelBadge(r.name) + '</td>' +
             '<td class="pts">' + r.pts + '</td>' +
             (sCol ? '<td>' + strengthCell(r.name) + '</td>' : '') +
             '<td class="hide-sm">' + r.played + '</td>' +
@@ -435,7 +433,7 @@
           }).join('');
           return '<div class="card prog-card" style="padding:20px 22px;margin-bottom:14px;">' +
             '<div class="prog-head" role="button" tabindex="0" aria-expanded="false">' +
-              '<div style="display:flex;align-items:center;gap:10px;"><span class="prog-chev">▸</span><span style="font-size:17px;font-weight:800;color:var(--text-1);">' + esc(n) + '</span>' + levelBadge(n) + '</div>' +
+              '<div style="display:flex;align-items:center;gap:10px;"><span class="prog-chev">▸</span><span style="font-size:17px;font-weight:800;color:var(--text-1);">' + esc(n) + '</span></div>' +
               '<div style="text-align:right;"><div style="font-size:24px;font-weight:800;color:var(--mint);font-variant-numeric:tabular-nums;line-height:1;">' + e.rating + '</div><div style="font-size:11px;color:var(--text-3);margin-top:3px;">официальный · ' + e.played + ' матчей</div></div>' +
             '</div>' +
             '<div class="prog-body"><div class="tbl-wrap"><table class="prog"><thead><tr><th>Матч</th><th>Формат</th><th>Соперник</th><th>Итог</th><th>Разгром</th><th>Δ</th><th>Рейтинг</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
