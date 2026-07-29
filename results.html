@@ -87,6 +87,11 @@
     .prog td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text-2); font-variant-numeric: tabular-nums; }
     .prog tr:last-child td { border-bottom: none; }
     .prog td.after { font-weight: 800; color: var(--text-1); }
+    .prog-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; cursor: pointer; user-select: none; }
+    .prog-chev { color: var(--text-3); font-size: 13px; transition: transform 0.18s ease; display: inline-block; }
+    .prog-card.open .prog-chev { transform: rotate(90deg); }
+    .prog-body { display: none; margin-top: 14px; }
+    .prog-card.open .prog-body { display: block; }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
@@ -428,14 +433,25 @@
               '<td class="after">' + Math.round(h.after) + '</td>' +
             '</tr>';
           }).join('');
-          return '<div class="card" style="padding:20px 22px;margin-bottom:14px;">' +
-            '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">' +
-              '<div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:var(--text-1);">' + esc(n) + '</span>' + levelBadge(n) + '</div>' +
+          return '<div class="card prog-card" style="padding:20px 22px;margin-bottom:14px;">' +
+            '<div class="prog-head" role="button" tabindex="0" aria-expanded="false">' +
+              '<div style="display:flex;align-items:center;gap:10px;"><span class="prog-chev">▸</span><span style="font-size:17px;font-weight:800;color:var(--text-1);">' + esc(n) + '</span>' + levelBadge(n) + '</div>' +
               '<div style="text-align:right;"><div style="font-size:24px;font-weight:800;color:var(--mint);font-variant-numeric:tabular-nums;line-height:1;">' + e.rating + '</div><div style="font-size:11px;color:var(--text-3);margin-top:3px;">официальный · ' + e.played + ' матчей</div></div>' +
             '</div>' +
-            '<div class="tbl-wrap"><table class="prog"><thead><tr><th>Матч</th><th>Формат</th><th>Соперник</th><th>Итог</th><th>Разгром</th><th>Δ</th><th>Рейтинг</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+            '<div class="prog-body"><div class="tbl-wrap"><table class="prog"><thead><tr><th>Матч</th><th>Формат</th><th>Соперник</th><th>Итог</th><th>Разгром</th><th>Δ</th><th>Рейтинг</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
           '</div>';
         }).join('');
+        wrap.querySelectorAll('.prog-card').forEach(function (card) {
+          var head = card.querySelector('.prog-head');
+          function toggle() {
+            var open = card.classList.toggle('open');
+            head.setAttribute('aria-expanded', open ? 'true' : 'false');
+          }
+          head.addEventListener('click', toggle);
+          head.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+          });
+        });
       })();
 
       // overall
