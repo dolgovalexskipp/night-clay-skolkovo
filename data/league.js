@@ -47,10 +47,10 @@ window.LEAGUE = {
     "Павел Ершов": { "level": "Silver", "tg": "ershovp" },
     "Андрей Медведев": { "level": "Silver", "tg": "am_verigo" },
     "Ольга Медведева": { "level": "Gold", "tg": "O_Med" },
-    "Вера Петрова": { "level": "Silver" },
-    "Дамир Хасянов": { "level": "Silver" },
-    "Дарья Гончарова": { "level": "Silver" },
-    "Тамара Сефилян": { "level": "Silver" }
+    "Вера Петрова": { "level": "Gold", "tg": "veruspetrovus" },
+    "Дамир Хасянов": { "level": "Silver", "tg": "khasyanov_official" },
+    "Дарья Гончарова": { "level": "Silver", "tg": "dariaavs" },
+    "Тамара Сефилян": { "level": "Silver", "tg": "tomadoma_ya" }
   },
   "matches": [
     {
